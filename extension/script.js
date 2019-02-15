@@ -109,7 +109,8 @@ PopcornGif.setup = function(r) {
 
   var parseTenorResponse = function(response) {
     return response.results.map(function(result) {
-      return createGifObj(result.media[0].tinywebm.url, result.media[0].gif.url, Api.Tenor, result.id);
+      var media = result.media[0];
+      return createGifObj(media.tinywebm.url, media.gif.url, Api.Tenor, result.id, media.tinygif.url, media.tinygif.dims);
     });
   }
 
@@ -119,12 +120,14 @@ PopcornGif.setup = function(r) {
     });
   }
 
-  var createGifObj = function(webmurl, gifurl, api, id) {
+  var createGifObj = function(webmurl, gifurl, api, id, tinygif, tinydims) {
     return {
       webmurl : webmurl,
       gifurl : gifurl,
       api : api,
-      id : id
+      id : id,
+      tinygif : tinygif,
+      tinydims : tinydims,
     };
   }
 
@@ -171,9 +174,10 @@ PopcornGif.setup = function(r) {
     var div = 
       $(`
       <div class="card">
-        <div class="card-image">
-          <video autoplay loop muted width="100%"><source src="${tinywebm}" type="video/webm"></video>
-        </div>
+        <div class="card-image">` +
+          `<img src="${gif.tinygif}" css="min-height: 100px;">` +
+          // `<video autoplay loop muted width="100%"><source src="${tinywebm}" type="video/webm"></video>` + // testing our tiny gif instead of WebP to enable dragging
+        `</div>
         <div class="card-content gif-actions">
           <img class="icon-image hand copy_github_btn" src="github.png" />
           <i class="small material-icons hand copy_btn">content_copy</i>
