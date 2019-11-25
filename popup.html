@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+
+        <link type="text/css" rel="stylesheet" href="libs/bootstrap/css/bootstrap.min.css" media="screen,projection" />
+        <link type="text/css" rel="stylesheet" href="libs/bootstrap-toggle/css/bootstrap-toggle.min.css"/>
+        <link  type="text/css" rel="stylesheet" href="css/style.css"/>
+
+        <title>Jiff GIF Search</title>
+        
+    </head>
+
+    <body>
+        <div class="sticky-top">
+            <nav class="navbar navbar-light navbar-fixed-top">
+                <label class="col-1 text-center" for="search"><i class="fas fa-search"></i></label>
+                <input id="search" class="form-control col-11" type="search" placeholder="Search" aria-label="Search">
+                <!-- <div class="col-1 text-center" ><i class="fas fa-heart"></i></div> -->
+            </nav>
+        </div>
+
+        <div class="container">
+            <div class="row justify-content-center">
+                <div id="intro" style="display: none;">
+                    <img id="jiff-icon" class="hand" src="icons/jiff-gif.svg" width="140" height="140" />
+                    <p class="flow-text">Welcome to Jiff GIF</p>
+                </div>
+            </div>
+        
+            <div class="row justify-content-center">
+                <div id="loader" class="spinner-border" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+            </div>
+
+            <div id="gifs-container" class="row" style="display: none;">
+                <div class="col-4 gif_column"></div>
+                <div class="col-4 gif_column"></div>
+                <div class="col-4 gif_column"></div>
+            </div>
+
+            <div id="gifs-empty" class="row justify-content-center align-items-center" style="display: none;">
+                <i class="far fa-sad-cry"></i>&emsp;no results&emsp;<i class="far fa-sad-cry"></i>
+            </div>
+        </div>
+
+        <div aria-live="polite" aria-atomic="true" class="fixed-bottom">
+            <div id="copy-toast" role="alert" class="toast" data-autohide="true" data-delay="1000">
+                <div class="toast-header">
+                </div>
+                <div class="toast-body">
+                    Copied!
+                </div>
+            </div>
+        </div>
+
+        <div aria-live="polite" aria-atomic="true" class="fixed-bottom">
+            <div id="download-toast" role="alert" class="toast" data-autohide="true" data-delay="2000">
+                <div class="toast-header">
+                </div>
+                <div class="toast-body">
+                    Downloaded!
+                </div>
+            </div>
+        </div>
+
+
+        <!--Scripts-->
+        <script src="libs/jquery/jquery-3.4.1.min.js" type="text/javascript"></script>
+        <script src="libs/bootstrap/js/popper.min.js" type="text/javascript"></script>
+        <script src="libs/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+        <script defer src="/libs/fontawesome/fontawesome.min.js"></script>
+        <script defer src="/libs/fontawesome/brands.min.js"></script>
+        <script defer src="/libs/fontawesome/solid.min.js"></script>
+        <script defer src="/libs/fontawesome/regular.min.js"></script>
+        <script src="libs/bootstrap-toggle/js/bootstrap-toggle.min.js" type="text/javascript"></script>
+        <script src="js/script.js" type="text/javascript"></script>
+        <script src="js/jiff-gif.js" type="text/javascript"></script>
+    </body>
+
+    <hr>
+
+    <footer>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-6 justify-content-center">
+                    <div id="dark-toggle-div">
+                        <label for="dark-toggle">Dark Mode: </label>
+                        <input id="dark-toggle" type="checkbox" data-toggle="toggle" data-size="small" data-onstyle="warning" data-offstyle="primary">
+                    </div>
+                </div>
+                <div class="col-6">
+                    <span style ="float: right">
+                        Created by <a href="https://justinfrey.com">Justin Frey</a>
+                    </span>
+                </div>
+            </div>
+            <div class="row my-2 justify-content-center">
+                <div class="icons" style="z-index: 9999;">
+                    <a href="https://github.com/justinfrey64"><i class="fab fa-github"></i></a>
+                    <a href=""><i class="fab fa-chrome"></i></a>
+                    <a href="https://addons.mozilla.org/en-US/firefox/addon/jiff-gif/"><i class="fab fa-firefox"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+</html>

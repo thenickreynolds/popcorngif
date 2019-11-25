@@ -1,0 +1,40 @@
+{
+    "manifest_version": 2,
+    "name": "Jiff GIF",
+    "version": "0.1.3",
+    "description": "gif search",
+    
+    "background": {
+        "scripts": [
+        ]
+    },
+
+    "icons": {
+        "16": "icons/jiff-gif-logo.svg",
+        "48": "icons/jiff-gif-logo.svg",
+        "128": "icons/jiff-gif-logo.svg"
+    },
+    
+    "browser_action": {
+        "default_title": "Jiff GIF Search",
+        "default_popup": "popup.html"
+    },
+
+    "browser_specific_settings": {
+        "gecko": {
+            "id": "jiffgif@example.com"
+        }
+    },
+
+    "web_accessible_resources": [
+        "popup.html",
+        "js/script.js",
+        "icons/jiff-gif.svg",
+        "js/jiff-gif.js"
+    ],
+
+    "permissions": [
+        "downloads",
+        "storage"
+    ]
+}

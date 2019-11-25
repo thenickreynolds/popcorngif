@@ -1,3 +1,3 @@
 $('document').ready(function() {
-  PopcornGif.setup($('body'));
+    JiffGif.setup($('body'));
 });
