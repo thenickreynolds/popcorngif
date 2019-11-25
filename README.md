@@ -2,5 +2,5 @@
 
 A GIF Search add-on
 
-Firefox: https://addons.mozilla.org/en-US/firefox/addon/jiff-gif/
-Chrome: Coming Soon
+<p>Firefox: https://addons.mozilla.org/en-US/firefox/addon/jiff-gif/</p>
+<p>Chrome: Coming Soon</p>
