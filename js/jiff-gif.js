@@ -15,7 +15,7 @@ JiffGif.setup = function(r) {
     }
 
     var api = Api.Tenor;
-    var API_KEY_TENOR = '1E4YUOGS2WLC';
+    var API_KEY_TENOR = {TENOR_KEY};
     var currentTimeout = null;
 
     $('document').ready(function() {
