@@ -5,15 +5,31 @@
 
 <p>This project was forked from Popcorn Search, an extension made by Nick Reynolds found here: 
   <ul>
-    <li>Github: https://github.com/thenickreynolds/popcorngif</li>
-    <li>Chrome: https://chrome.google.com/webstore/detail/popcorn-gif-search/hhbinbjmknpkmebphiohakpakndjhpoe?hl=en</li>
+    <li>
+      <a href="https://github.com/thenickreynolds/popcorngif">
+        Github
+      </a>
+    </li>
+    <li>
+      <a href="https://chrome.google.com/webstore/detail/popcorn-gif-search/hhbinbjmknpkmebphiohakpakndjhpoe?hl=en">
+        Chrome
+      </a>
+    </li>
   </ul>
 </p>
 
 <p>Available on 
   <ul>
-    <li>Firefox: https://addons.mozilla.org/en-US/firefox/addon/jiff-gif/</li>
-    <li>Chrome: Pending Review</li>
+    <li>
+      <a href="https://addons.mozilla.org/en-US/firefox/addon/jiff-gif/">
+        Firefox
+      </a>
+    </li>
+    <li>
+      <a href="https://chrome.google.com/webstore/detail/jiff-gif/okapobmfaemkkegfgafohlidmiaagedg">
+        Chrome
+      </a>
+    </li>
   </ul>
 </p>
 
