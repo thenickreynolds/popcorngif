@@ -222,12 +222,12 @@ var toggleDarkMode = function(checked) {
     var jiffThemeSetting;
     if(checked){
         $('body').addClass('dark');
-        $('#jiff-icon').attr('src',"/icons/jiff-gif-white.svg");
+        $('#jiff-icon').attr('src',"/icons/jiff-gif-white.png");
         jiffThemeSetting = 'dark';
     }
     else{
         $('body').removeClass('dark');
-        $('#jiff-icon').attr('src','/icons/jiff-gif.svg');
+        $('#jiff-icon').attr('src','/icons/jiff-gif.png');
         jiffThemeSetting = 'light';
     } 
     chrome.storage.local.set({jiffThemeSetting});
