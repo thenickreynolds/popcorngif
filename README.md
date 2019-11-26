@@ -40,3 +40,12 @@
     <li>More APIs with ability to pick and choose which ones are used</li>
   </ul>
 </p>
+
+Screenshots:
+![Screenshot of Jiff Gif - Light Theme](https://raw.githubusercontent.com/justinfrey64/jiff-gif/master/screenshots/firefox/screenshot.jpg)
+
+![Screenshot of Jiff Gif search - Light Theme](https://raw.githubusercontent.com/justinfrey64/jiff-gif/master/screenshots/firefox/screenshot-4.jpg)
+
+![Screenshot of Jiff Gif - Dark Theme](https://raw.githubusercontent.com/justinfrey64/jiff-gif/master/screenshots/firefox/screenshot-2.jpg)
+
+![Screenshot of Jiff Gif search- Dark Theme](https://raw.githubusercontent.com/justinfrey64/jiff-gif/master/screenshots/firefox/screenshot-3.jpg)
