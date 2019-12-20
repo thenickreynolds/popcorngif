@@ -64,3 +64,20 @@ html {
 	cursor: hand;
 	float: left;
 }
+
+#xmashat {
+	display: none;
+	position: absolute;
+    width: 100px;
+	margin-top: -20px;
+	margin-left: 50px;
+	cursor: hand;
+}
+
+.center {
+	min-height: 370px;	
+}
+
+#intro {
+	padding-top: 75px;
+}

@@ -57,10 +57,13 @@ PopcornGif.setup = function(r) {
       }
     });
 
-    r.find('#popcorn-bowl').click(function() {
+    var searchPopcorn = function() {
       r.find('#search').val('popcorn');
       performSearch();
-    });
+    };
+
+    r.find('#popcorn-bowl').click(searchPopcorn);
+    r.find('#xmashat').click(searchPopcorn);
 
     setState(State.Intro);
 
@@ -136,6 +139,10 @@ PopcornGif.setup = function(r) {
     r.find('#loader').toggle(state == State.Loading);
     r.find('#gifs-container').toggle(state == State.Results);
     r.find('#gifs-empty').toggle(state == State.Empty);
+
+    var now = new Date();
+    var xmasTime = now.getMonth() == 11 && now.getDate() >= 14 && now.getDate() <= 25; // all are minus one
+    r.find("#xmashat").toggle(state == State.Intro && xmasTime);
   }
 
   var clearGifs = function() {
