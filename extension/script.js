@@ -65,6 +65,9 @@ PopcornGif.setup = function(r) {
     r.find('#popcorn-bowl').click(searchPopcorn);
     r.find('#xmashat').click(searchPopcorn);
 
+    var isEdge = window.navigator.userAgent.indexOf('Edg/') >= 0;
+    $('#chrome-web-store-link').toggle(!isEdge);
+
     setState(State.Intro);
 
     r.find("#search").focus();
