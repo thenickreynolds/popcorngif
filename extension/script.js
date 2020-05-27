@@ -33,6 +33,7 @@ PopcornGif.setup = function(r) {
   var API_KEY_TENOR = 'Y7QV3LZRDJTL';
   var API_KEY_GIPHY = '3rgXBKNKDmcA5Ykg9i'; // 'd3266f0f56f94ea3b4b7eb13f0c7e8f0'; // TODO get our own API key, this is borrow from somewhere temporarily
   var currentTimeout = null;
+  var currentQuery = "";
 
   $('document').ready(function() {
     setup(r);
@@ -71,6 +72,7 @@ PopcornGif.setup = function(r) {
   }
 
   var performSearch = function() {
+    // prevent re-triggering search
     var term = r.find('#search').val();
 
     if (term.length > 0) {
@@ -82,6 +84,13 @@ PopcornGif.setup = function(r) {
 
   var search = function(query) {
     query = query.trim();
+    
+    // prevent re-triggering an existing search
+    if (currentQuery === query) {
+      return;
+    }
+    currentQuery = query;
+
     clearGifs();
     setState(State.Loading);
 
