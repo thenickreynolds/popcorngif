@@ -21,13 +21,12 @@
     "permissions": [
         "downloads"
     ],
-    "content_security_policy": "script-src 'self' https://www.google-analytics.com; object-src 'self'",
+    "content_security_policy": "script-src 'self' https://www.google-analytics.com https://connect.facebook.net; object-src 'self'",
     "commands": {
         "_execute_browser_action": {
             "suggested_key": {
                 "default": "Alt+G"
             }
         }
-    },
-    "content_security_policy": "script-src 'self' https://connect.facebook.net; object-src 'self'"
+    }
 }
