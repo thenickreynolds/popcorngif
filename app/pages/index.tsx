@@ -1,9 +1,46 @@
 import Head from "next/head";
-import styles from "../styles/Home.module.css";
+import { useState } from "react";
+import Footer from "../components/footer";
+import Placeholder from "../components/placeholder";
+import SearchBox from "../components/searchbox";
+import SearchResults from "../components/searchResults";
 
 export default function Home() {
+  const [searchValue, setSearchValue] = useState("");
+  const searchTerm = searchValue.trim();
+  const hasSearchTerm = searchTerm.length > 0;
+
+  const placeholderClick = () => {
+    setSearchValue("popcorn");
+  };
+
   return (
-    <div className={styles.container}>
+    <div className="container">
+      <style jsx={true}>{`
+        .container {
+          min-height: 100vh;
+          padding: 0;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: stretch;
+          width: 100%;
+        }
+
+        .main {
+          padding: 5rem 0;
+          flex-grow: 1;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+        }
+
+        .contents {
+          flex-grow: 1;
+          width: 100%;
+        }
+      `}</style>
       <Head>
         <title>Popcorn GIF Search</title>
 
@@ -27,9 +64,20 @@ export default function Home() {
         <link rel="manifest" href="/favicon/site.webmanifest" />
       </Head>
 
-      <main className={styles.main}></main>
+      <header>
+        <SearchBox text={searchValue} onChange={setSearchValue} />
+      </header>
+      <main className="main">
+        {hasSearchTerm ? (
+          <SearchResults term={searchTerm} />
+        ) : (
+          <Placeholder onClick={placeholderClick} />
+        )}
+      </main>
 
-      <footer className={styles.footer}></footer>
+      <footer className="footer">
+        <Footer />
+      </footer>
     </div>
   );
 }
