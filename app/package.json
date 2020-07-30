@@ -14,7 +14,6 @@
     "next": "9.5.0",
     "react": "16.13.1",
     "react-dom": "16.13.1",
-    "react-facebook-pixel": "^1.0.3",
     "react-ga": "^3.1.2",
     "react-use-web-share": "^1.0.2"
   },

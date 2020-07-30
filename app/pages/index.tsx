@@ -5,16 +5,9 @@ import Placeholder from "../components/placeholder";
 import SearchBox from "../components/searchBox";
 import SearchHandler from "../components/searchHandler";
 import ToastContainer from "../components/toastContainer";
-import { useEffect } from "react";
-import GALogger from "../utils/GALogger";
-import ReactPixel from "react-facebook-pixel";
+import AnalyticsPageLogger from "../components/analyticsPageLogger";
 
 export default function Home() {
-  useEffect(() => {
-    GALogger.page("/");
-    ReactPixel.init("838905083266320");
-  }, []);
-
   const [searchValue, setSearchValue] = useState("");
 
   const searchTerm = searchValue.trim();
@@ -76,6 +69,8 @@ export default function Home() {
           rel="stylesheet"
         />
       </Head>
+
+      <AnalyticsPageLogger path="/" />
 
       <header>
         <SearchBox text={searchValue} onChange={setSearchValue} />
