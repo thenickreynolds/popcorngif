@@ -4,6 +4,7 @@ import Footer from "../components/footer";
 import Placeholder from "../components/placeholder";
 import SearchBox from "../components/searchBox";
 import SearchHandler from "../components/searchHandler";
+import ToastContainer from "../components/toastContainer";
 
 export default function Home() {
   const [searchValue, setSearchValue] = useState("");
@@ -70,6 +71,9 @@ export default function Home() {
       <header>
         <SearchBox text={searchValue} onChange={setSearchValue} />
       </header>
+
+      <ToastContainer />
+
       <main className="main">
         {hasSearchTerm ? (
           <SearchHandler term={searchTerm} />
