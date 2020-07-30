@@ -20,7 +20,7 @@ export default function LoadingSpinner({
           border-radius: 50%;
           width: ${size}px;
           height: ${size}px;
-          animation: spin 0.4s linear infinite;
+          animation: spin 0.5s linear infinite;
         }
 
         @keyframes spin {

@@ -23,7 +23,7 @@ export default function SearchResults({
   }, [containerRef.current?.offsetWidth || 1]);
 
   const columns: Result[][] = [];
-  console.log(columnCount);
+
   for (let i = 0; i < results.length; i++) {
     const column = i % columnCount;
     if (columns[column] === undefined) columns[column] = [];

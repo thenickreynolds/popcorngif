@@ -12,7 +12,7 @@ export default function SearchHandler({ term }: { term: string }) {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
   const [results, setResults] = useState<Result[]>([]);
-  const throttledTerm = useThrottle(term, 300);
+  const throttledTerm = useThrottle(term, 400);
 
   const hasSearchTerm = throttledTerm.length > 0;
 
@@ -24,6 +24,8 @@ export default function SearchHandler({ term }: { term: string }) {
     if (!hasSearchTerm) {
       return;
     }
+
+    console.log("searching: " + throttledTerm);
 
     setIsLoading(true);
     const source = CancelToken.source();
@@ -45,11 +47,7 @@ export default function SearchHandler({ term }: { term: string }) {
     };
   }, [throttledTerm]);
 
-  if (!hasSearchTerm) {
-    return <></>;
-  }
-
-  if (isLoading) {
+  if (!hasSearchTerm || isLoading) {
     return <LoadingSpinner />;
   }
 
