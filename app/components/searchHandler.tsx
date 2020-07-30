@@ -3,8 +3,9 @@ import axios from "axios";
 import SearchTenor from "../utils/searchTenor";
 import { Result, TenorSearchResult } from "../types/tenorTypes";
 import useThrottle from "../utils/useThrottle";
-import SearchResults from "./searchResults";
 import LoadingSpinner from "./loadingSpinner";
+import SearchResults from "./searchResults";
+import GALogger from "../utils/GALogger";
 
 const CancelToken = axios.CancelToken;
 
@@ -25,6 +26,7 @@ export default function SearchHandler({ term }: { term: string }) {
       return;
     }
 
+    GALogger.search();
     console.log("searching: " + throttledTerm);
 
     setIsLoading(true);
@@ -37,6 +39,7 @@ export default function SearchHandler({ term }: { term: string }) {
       })
       .catch((e) => {
         console.log(`Hit error requesting data: ${JSON.stringify(e)}`);
+        GALogger.error("Search", e);
         setError(true);
       })
 

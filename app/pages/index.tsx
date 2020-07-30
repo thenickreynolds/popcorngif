@@ -5,9 +5,14 @@ import Placeholder from "../components/placeholder";
 import SearchBox from "../components/searchBox";
 import SearchHandler from "../components/searchHandler";
 import ToastContainer from "../components/toastContainer";
+import { useEffect } from "react";
+import GALogger from "../utils/GALogger";
 
 export default function Home() {
+  useEffect(() => GALogger.page("/"), []);
+
   const [searchValue, setSearchValue] = useState("");
+
   const searchTerm = searchValue.trim();
   const hasSearchTerm = searchTerm.length > 0;
 

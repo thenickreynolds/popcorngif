@@ -4,6 +4,7 @@ import Clipboard from "../utils/clipboard";
 import useWebShare from "react-use-web-share";
 import { useContext } from "react";
 import { ToastContext } from "./toastContainer";
+import GALogger from "../utils/GALogger";
 
 export const GIF_WIDTH_PX = 220;
 export const GIF_MARGIN_PX = 15;
@@ -61,7 +62,11 @@ export default function SearchResult({
         }
       `}</style>
 
-      <img src={url} className="gif" />
+      <img
+        src={url}
+        className="gif"
+        onDragStart={() => GALogger.gifAction("drag")}
+      />
 
       <div className="action_container">
         <div className="action">
@@ -71,6 +76,7 @@ export default function SearchResult({
               onClick={(e) => {
                 Clipboard.write(markdown);
                 toaster.info("Copied to clipboard");
+                GALogger.gifAction("copy_markdown");
                 e.preventDefault();
               }}
             >
@@ -89,6 +95,7 @@ export default function SearchResult({
               onClick={(e) => {
                 Clipboard.write(url);
                 toaster.info("Copied to clipboard");
+                GALogger.gifAction("copy_url");
                 e.preventDefault();
               }}
             >
@@ -107,6 +114,7 @@ export default function SearchResult({
                 href="#"
                 onClick={(e) => {
                   share({ text: `Shared via Popcorn GIF Search`, url });
+                  GALogger.gifAction("share");
                   e.preventDefault();
                 }}
               >
