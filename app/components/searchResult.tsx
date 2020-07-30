@@ -26,7 +26,6 @@ export default function SearchResult({
           background-color: #eeeeee;
           border-radius: 5px;
           width: ${GIF_WIDTH_PX}px;
-          transition: ease-in-out, 0.35s ease-in-out;
           box-shadow: 1px 1px 3px gray;
         }
 
