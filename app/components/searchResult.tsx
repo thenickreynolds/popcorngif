@@ -65,8 +65,9 @@ export default function SearchResult({
           <Tooltip text="Copy markdown">
             <a
               href="#"
-              onClick={() => {
+              onClick={(e) => {
                 Clipboard.write(markdown);
+                e.preventDefault();
               }}
             >
               <img
@@ -81,8 +82,9 @@ export default function SearchResult({
           <Tooltip text="Copy link">
             <a
               href="#"
-              onClick={() => {
+              onClick={(e) => {
                 Clipboard.write(url);
+                e.preventDefault();
               }}
             >
               <img
@@ -98,8 +100,9 @@ export default function SearchResult({
             <Tooltip text="Share">
               <a
                 href="#"
-                onClick={() => {
+                onClick={(e) => {
                   share({ text: `${term} shared with Popcorn GIF`, url });
+                  e.preventDefault();
                 }}
               >
                 <img
