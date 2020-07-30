@@ -3,7 +3,7 @@ import { useState } from "react";
 import Footer from "../components/footer";
 import Placeholder from "../components/placeholder";
 import SearchBox from "../components/searchbox";
-import SearchResults from "../components/searchResults";
+import SearchHandler from "../components/searchHandler";
 
 export default function Home() {
   const [searchValue, setSearchValue] = useState("");
@@ -28,7 +28,6 @@ export default function Home() {
         }
 
         .main {
-          padding: 5rem 0;
           flex-grow: 1;
           display: flex;
           flex-direction: column;
@@ -69,7 +68,7 @@ export default function Home() {
       </header>
       <main className="main">
         {hasSearchTerm ? (
-          <SearchResults term={searchTerm} />
+          <SearchHandler term={searchTerm} />
         ) : (
           <Placeholder onClick={placeholderClick} />
         )}
