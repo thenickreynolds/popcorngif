@@ -21,6 +21,7 @@ export default function Tooltip({
           text-align: center;
           padding: 5px;
           border-radius: 6px;
+          opacity: 0;
 
           /* Position the tooltip text - see examples below! */
           position: absolute;
@@ -28,15 +29,15 @@ export default function Tooltip({
 
           top: 100%;
           left: 50%;
+
+          font-size: 9pt;
+          transition: ease-in-out, 0.35s ease-in-out;
         }
 
         /* Show the tooltip text when you mouse over the tooltip container */
         .tooltip:hover .tooltiptext {
           visibility: visible;
-        }
-
-        .tooltiptext {
-          font-size: 9pt;
+          opacity: 1;
         }
       `}</style>
       <div className="tooltip">
