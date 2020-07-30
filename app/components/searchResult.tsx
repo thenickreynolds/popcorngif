@@ -101,7 +101,7 @@ export default function SearchResult({
               <a
                 href="#"
                 onClick={(e) => {
-                  share({ text: `${term} shared with Popcorn GIF`, url });
+                  share({ text: `Shared via Popcorn GIF Search`, url });
                   e.preventDefault();
                 }}
               >
