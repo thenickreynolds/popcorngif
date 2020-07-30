@@ -11,8 +11,7 @@ export default function SearchBox({
         .search_input {
           width: 100%;
           outline: none;
-          height: 50px;
-          padding: 0px 10px 0px 42px;
+          padding: 22px 10px 16px 52px;
           color: #ffffff;
           transition: ease-in-out, 0.35s ease-in-out;
           border: none;
@@ -20,13 +19,13 @@ export default function SearchBox({
           font-size: 12pt;
           font-weight: none;
           background: #ee6e73 url(/search_icon_color_feature.svg) no-repeat
-            scroll 14px 17px;
+            scroll 20px 22px;
         }
 
         .search_input:focus {
           color: #000000;
           background: #ffffff url(/search_icon_color_black.svg) no-repeat scroll
-            14px 17px;
+            20px 22px;
         }
 
         .search_input:focus ::placeholder {
