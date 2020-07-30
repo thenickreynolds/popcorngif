@@ -2,6 +2,8 @@ import { Result } from "../types/tenorTypes";
 import Tooltip from "./tooltip";
 import Clipboard from "../utils/clipboard";
 import useWebShare from "react-use-web-share";
+import { useContext } from "react";
+import { ToastContext } from "./toastContainer";
 
 export const GIF_WIDTH_PX = 220;
 export const GIF_MARGIN_PX = 15;
@@ -13,6 +15,7 @@ export default function SearchResult({
   term: string;
   result: Result;
 }) {
+  const toaster = useContext(ToastContext);
   const { isSupported: isShareSupported, share } = useWebShare();
   const url = result.media[0].tinygif.url;
   const markdown = `![${term}](${url})`;
@@ -67,6 +70,7 @@ export default function SearchResult({
               href="#"
               onClick={(e) => {
                 Clipboard.write(markdown);
+                toaster.info("Copied to clipboard");
                 e.preventDefault();
               }}
             >
@@ -84,6 +88,7 @@ export default function SearchResult({
               href="#"
               onClick={(e) => {
                 Clipboard.write(url);
+                toaster.info("Copied to clipboard");
                 e.preventDefault();
               }}
             >
