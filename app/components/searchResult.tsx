@@ -1,6 +1,7 @@
 import { Result } from "../types/tenorTypes";
 import Tooltip from "./tooltip";
 import Clipboard from "../utils/clipboard";
+import useWebShare from "react-use-web-share";
 
 export const GIF_WIDTH_PX = 220;
 export const GIF_MARGIN_PX = 15;
@@ -12,6 +13,7 @@ export default function SearchResult({
   term: string;
   result: Result;
 }) {
+  const { isSupported: isShareSupported, share } = useWebShare();
   const url = result.media[0].tinygif.url;
   const markdown = `![${term}](${url})`;
 
@@ -91,6 +93,24 @@ export default function SearchResult({
             </a>
           </Tooltip>
         </div>
+        {isShareSupported ? (
+          <div className="action">
+            <Tooltip text="Share">
+              <a
+                href="#"
+                onClick={() => {
+                  share({ text: `${term} shared with Popcorn GIF`, url });
+                }}
+              >
+                <img
+                  className="action_icon"
+                  src="/icons/share-24px.svg"
+                  alt="Copy link"
+                />
+              </a>
+            </Tooltip>
+          </div>
+        ) : null}
       </div>
     </div>
   );
