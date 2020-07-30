@@ -3,7 +3,7 @@ import Tooltip from "./tooltip";
 import Clipboard from "../utils/clipboard";
 
 export const GIF_WIDTH_PX = 220;
-export const GIF_MARGIN_PX = 10;
+export const GIF_MARGIN_PX = 15;
 
 export default function SearchResult({
   term,
@@ -88,17 +88,6 @@ export default function SearchResult({
                 className="action_icon"
                 src="/icons/content_copy-black-18dp.svg"
                 alt="Copy link"
-              />
-            </a>
-          </Tooltip>
-        </div>
-        <div className="action">
-          <Tooltip text="Save">
-            <a href="#">
-              <img
-                className="action_icon"
-                src="/icons/save-black-18dp.svg"
-                alt="Download GIF"
               />
             </a>
           </Tooltip>
