@@ -2,7 +2,7 @@ import Head from "next/head";
 import { useState } from "react";
 import Footer from "../components/footer";
 import Placeholder from "../components/placeholder";
-import SearchBox from "../components/searchbox";
+import SearchBox from "../components/searchBox";
 import SearchHandler from "../components/searchHandler";
 
 export default function Home() {
