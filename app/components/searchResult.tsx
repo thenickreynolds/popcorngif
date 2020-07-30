@@ -5,9 +5,16 @@ import useWebShare from "react-use-web-share";
 import { useContext } from "react";
 import { ToastContext } from "./toastContainer";
 import GALogger from "../utils/GALogger";
+import axios from "axios";
+import SearchTenor from "../utils/searchTenor";
 
 export const GIF_WIDTH_PX = 220;
 export const GIF_MARGIN_PX = 15;
+
+function logShare(id: string, shareType: string) {
+  GALogger.gifAction(shareType);
+  axios.get(SearchTenor.shareUrl(id));
+}
 
 export default function SearchResult({
   term,
@@ -65,7 +72,7 @@ export default function SearchResult({
       <img
         src={url}
         className="gif"
-        onDragStart={() => GALogger.gifAction("drag")}
+        onDragStart={() => logShare(result.id, "drag")}
       />
 
       <div className="action_container">
@@ -76,7 +83,7 @@ export default function SearchResult({
               onClick={(e) => {
                 Clipboard.write(markdown);
                 toaster.info("Copied to clipboard");
-                GALogger.gifAction("copy_markdown");
+                logShare(result.id, "copy_markdown");
                 e.preventDefault();
               }}
             >
@@ -95,7 +102,7 @@ export default function SearchResult({
               onClick={(e) => {
                 Clipboard.write(url);
                 toaster.info("Copied to clipboard");
-                GALogger.gifAction("copy_url");
+                logShare(result.id, "copy_url");
                 e.preventDefault();
               }}
             >
@@ -114,7 +121,7 @@ export default function SearchResult({
                 href="#"
                 onClick={(e) => {
                   share({ text: `Shared via Popcorn GIF Search`, url });
-                  GALogger.gifAction("share");
+                  logShare(result.id, "share");
                   e.preventDefault();
                 }}
               >

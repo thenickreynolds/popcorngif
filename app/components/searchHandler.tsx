@@ -31,7 +31,7 @@ export default function SearchHandler({ term }: { term: string }) {
 
     setIsLoading(true);
     const source = CancelToken.source();
-    const url = SearchTenor.getUrl(throttledTerm);
+    const url = SearchTenor.searchUrl(throttledTerm);
     axios
       .get<TenorSearchResult>(url, { cancelToken: source.token })
       .then((response) => {
