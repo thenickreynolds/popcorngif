@@ -35,7 +35,7 @@ export default function SearchResult({
           display: flex;
           flex-direction: column;
           align-items: stretch;
-          margin-bottom: ${gifSize.padding}px;
+          margin-bottom: ${gifSize.spacing}px;
           background-color: #eeeeee;
           border-radius: 5px;
           width: ${gifSize.width}px;

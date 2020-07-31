@@ -26,15 +26,15 @@ export default function SearchResults({
           display: flex;
           flex-flow: row wrap;
           justify-content: center;
-          padding-right: ${gifSize.padding}px;
-          padding-top: ${gifSize.padding}px;
+          padding-right: ${gifSize.spacing}px;
+          padding-top: ${gifSize.spacing}px;
           width: 100%;
         }
 
         .gif_column {
           display: flex;
           flex-direction: column;
-          margin-left: ${gifSize.padding}px;
+          margin-left: ${gifSize.spacing}px;
         }
       `}</style>
       <div className="results_container">

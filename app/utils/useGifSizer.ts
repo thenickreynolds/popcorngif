@@ -1,7 +1,7 @@
 import useWindowDimensions from "./useWindowDimensions";
 
 const SCROLLBAR_SIZE = 20;
-const PADDING = 10;
+const SPACING = 10;
 const ONE_COLUMN_WIDTH_MAX = 275;
 const TWO_COLUMN_WIDTH_MAX = 450;
 const THREE_COLUMN_WIDTH_MAX = 800;
@@ -9,17 +9,17 @@ const FOUR_COLUMN_WIDTH_MAX = 1200;
 const MAX_GIF_WIDTH = 300;
 
 function calculateSize(windowWidth: number, numColumns: number) {
-  const sizeForContainers = windowWidth - PADDING - SCROLLBAR_SIZE;
+  const sizeForContainers = windowWidth - SPACING - SCROLLBAR_SIZE;
   const sizePerContainer = sizeForContainers / numColumns;
   const gifSize = Math.min(
-    Math.floor(sizePerContainer - PADDING),
+    Math.floor(sizePerContainer - SPACING),
     MAX_GIF_WIDTH
   );
 
   return {
     numColumns,
     width: gifSize,
-    padding: PADDING,
+    spacing: SPACING,
   };
 }
 
