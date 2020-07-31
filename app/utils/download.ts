@@ -1,6 +1,6 @@
 export default class Download {
   static isSupported() {
-    return true;
+    return false;
   }
 
   static download(url: string, filename: string) {
