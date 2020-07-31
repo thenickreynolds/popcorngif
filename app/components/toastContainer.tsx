@@ -77,7 +77,7 @@ export default function ToastContainer() {
           position: absolute;
           width: 100%;
           left: 50%;
-          top: 10px;
+          top: 25px;
           transform: translate(-50%, 0%);
           display: flex;
           flex-direction: column;
@@ -93,10 +93,9 @@ export default function ToastContainer() {
           margin-top: 10px;
           color: #ffffff;
           background-color: #b45559;
-          border: solid 1px #000000;
           border-radius: 5px;
           text-align: center;
-          box-shadow: 2px 1px 3px gray;
+          box-shadow: 2px 1px 3px #b45559;
         }
 
         .toast_title {
