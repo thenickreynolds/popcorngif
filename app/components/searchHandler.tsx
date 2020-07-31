@@ -14,7 +14,7 @@ export default function SearchHandler({ term }: { term: string }) {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
   const [results, setResults] = useState<Result[]>([]);
-  const throttledTerm = useThrottle(term, 400);
+  const throttledTerm = useThrottle(term, 600);
 
   const hasSearchTerm = throttledTerm.length > 0;
 
