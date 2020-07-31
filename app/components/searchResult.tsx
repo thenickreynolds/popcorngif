@@ -8,6 +8,7 @@ import GALogger from "../utils/GALogger";
 import axios from "axios";
 import SearchTenor from "../utils/searchTenor";
 import useGifSizer from "../utils/useGifSizer";
+import Download from "../utils/download";
 
 function logShare(id: string, shareType: string) {
   GALogger.gifAction(shareType);
@@ -114,6 +115,27 @@ export default function SearchResult({
             </a>
           </Tooltip>
         </div>
+        {Download.isSupported() ? (
+          <div className="action">
+            <Tooltip text="Download">
+              <a
+                href="#"
+                onClick={(e) => {
+                  Download.download(url, term + ".gif");
+                  toaster.info("Downloading...");
+                  logShare(result.id, "download");
+                  e.preventDefault();
+                }}
+              >
+                <img
+                  className="action_icon"
+                  src="/icons/save-black-18dp.svg"
+                  alt="Download"
+                />
+              </a>
+            </Tooltip>
+          </div>
+        ) : null}
         {isShareSupported ? (
           <div className="action">
             <Tooltip text="Share">
