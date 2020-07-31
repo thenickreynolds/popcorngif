@@ -34,7 +34,7 @@ export default function Home() {
           flex-grow: 1;
           display: flex;
           flex-direction: column;
-          justify-content: flex-start;
+          justify-content: center;
           align-items: stretch;
         }
 
