@@ -8,6 +8,7 @@ import SearchResults from "./searchResults";
 import GALogger from "../utils/GALogger";
 
 const CancelToken = axios.CancelToken;
+const requestCancelledError = "Cancelling request";
 
 export default function SearchHandler({ term }: { term: string }) {
   const [isLoading, setIsLoading] = useState(false);
@@ -38,15 +39,16 @@ export default function SearchHandler({ term }: { term: string }) {
         setResults(response.data.results);
       })
       .catch((e) => {
+        if (requestCancelledError === requestCancelledError) return;
+
         console.log(`Hit error requesting data: ${JSON.stringify(e)}`);
         GALogger.error("Search", e);
         setError(true);
       })
-
       .finally(() => setIsLoading(false));
 
     return () => {
-      source.cancel("Cleaning up request");
+      source.cancel(requestCancelledError);
     };
   }, [throttledTerm]);
 
