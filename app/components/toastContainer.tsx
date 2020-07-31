@@ -74,7 +74,7 @@ export default function ToastContainer() {
     <>
       <style jsx={true}>{`
         .container {
-          position: absolute;
+          position: fixed;
           width: 100%;
           left: 50%;
           top: 25px;
