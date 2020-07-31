@@ -17,9 +17,10 @@ export default class GALogger {
     this.log(category, action, true);
   }
 
-  static page(path: string) {
+  static page(path: string, title: string) {
     this.ensureInit();
-    ReactGA.pageview(path);
+    console.log(`GA: Page - ${path} - ${title}`);
+    ReactGA.pageview(path, undefined, title);
   }
 
   static ensureInit() {

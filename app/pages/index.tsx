@@ -71,7 +71,7 @@ export default function Home() {
         />
       </Head>
 
-      <AnalyticsPageLogger path="/" />
+      <AnalyticsPageLogger />
 
       <header>
         <SearchBox text={searchValue} onChange={setSearchValue} />
