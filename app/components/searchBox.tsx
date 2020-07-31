@@ -25,36 +25,38 @@ export default function SearchBox({
       <style jsx={true}>{`
         .back_button {
           position: absolute;
-          visibility: ${hasContent ? "visible" : "collapse"};
-          opacity: ${hasContent ? 1 : 0};
-          transition: ease-in-out, 0.35s ease-in-out;
-          width: 40px;
-          height: 45px;
-          top: 6px;
-          left: 8px;
+          width 42px;
+          height: 42px;
+          top: 8px;
+          left: 6px;
         }
 
         .search_input {
           width: 100%;
           outline: none;
-          padding: 22px 10px 16px 52px;
+          padding: 19px 5px 16px 52px;
           color: #ffffff;
           transition: ease-in-out, 0.35s ease-in-out;
           border: none;
           box-shadow: 2px 1px 3px gray;
-          font-size: 12pt;
+          font: font-family: "Roboto", sans-serif;
+          font-size: 13pt;
           font-weight: none;
-          background: #ee6e73 url(/icons/search_icon_color_feature.svg) no-repeat
-            scroll 20px 20px;
+          background: #ee6e73 url(${
+            hasContent
+              ? "/icons/back_chevron_feature.svg"
+              : "/icons/search_icon_color_feature.svg"
+          }) no-repeat
+            scroll 20px 22px;
         }
 
         .search_input:focus {
           color: #000000;
           background: #ffffff url(${
             hasContent
-              ? "/icons/keyboard_arrow_left-24px.svg"
+              ? "/icons/back_chevron_black.svg"
               : "/icons/search_icon_color_black.svg"
-          }) no-repeat scroll 20px 20px};
+          }) no-repeat scroll 20px 22px};
         }
 
         .search_input:focus ::placeholder {
