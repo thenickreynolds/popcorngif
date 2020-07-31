@@ -1,3 +1,6 @@
+import { useRef } from "react";
+import { useEffect } from "react";
+
 export default function SearchBox({
   text,
   onChange,
@@ -5,6 +8,12 @@ export default function SearchBox({
   text: string;
   onChange: (text: string) => void;
 }) {
+  const ref = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (ref.current) ref.current.focus();
+  }, [ref]);
+
   return (
     <div>
       <style jsx={true}>{`
@@ -47,6 +56,7 @@ export default function SearchBox({
           type="search"
           value={text}
           onChange={(e) => onChange(e.target.value)}
+          ref={ref}
         />
       </div>
     </div>
