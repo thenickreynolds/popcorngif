@@ -15,6 +15,43 @@ function logShare(id: string, shareType: string) {
   axios.get(SearchTenor.shareUrl(id));
 }
 
+function Action({
+  iconPath,
+  text,
+  onClick,
+}: {
+  iconPath: string;
+  text: string;
+  onClick: () => void;
+}) {
+  return (
+    <>
+      <style jsx={true}>{`
+        .action {
+          padding-left: 5px;
+        }
+
+        .action_icon {
+          height: 25px;
+        }
+      `}</style>
+      <div className="action">
+        <Tooltip text={text}>
+          <a
+            href="#"
+            onClick={(e) => {
+              onClick();
+              e.preventDefault;
+            }}
+          >
+            <img className="action_icon" src={iconPath} alt={text} />
+          </a>
+        </Tooltip>
+      </div>
+    </>
+  );
+}
+
 export default function SearchResult({
   term,
   result,
@@ -78,14 +115,6 @@ export default function SearchResult({
           border-radius: 500px;
           padding: 5px 10px 2px 5px;
         }
-
-        .action {
-          padding-left: 5px;
-        }
-
-        .action_icon {
-          height: 25px;
-        }
       `}</style>
 
       <img
@@ -96,84 +125,44 @@ export default function SearchResult({
 
       <div className="action_container">
         <div className="action_buttons">
-          <div className="action">
-            <Tooltip text="Copy markdown">
-              <a
-                href="#"
-                onClick={(e) => {
-                  Clipboard.write(markdown);
-                  toaster.info("Markdown copied");
-                  logShare(result.id, "copy_markdown");
-                  e.preventDefault();
-                }}
-              >
-                <img
-                  className="action_icon"
-                  src="/icons/github-logo-tiny.svg"
-                  alt="Copy markdown"
-                />
-              </a>
-            </Tooltip>
-          </div>
-          <div className="action">
-            <Tooltip text="Copy link">
-              <a
-                href="#"
-                onClick={(e) => {
-                  Clipboard.write(url);
-                  toaster.info("Link copied");
-                  logShare(result.id, "copy_url");
-                  e.preventDefault();
-                }}
-              >
-                <img
-                  className="action_icon"
-                  src="/icons/link-black-18dp.svg"
-                  alt="Copy link"
-                />
-              </a>
-            </Tooltip>
-          </div>
+          <Action
+            text="Copy markdown"
+            iconPath="/icons/github-logo-tiny.svg"
+            onClick={() => {
+              Clipboard.write(markdown);
+              toaster.info("Markdown copied");
+              logShare(result.id, "copy_markdown");
+            }}
+          />
+          <Action
+            text="Copy link"
+            iconPath="/icons/link-black-18dp.svg"
+            onClick={() => {
+              Clipboard.write(url);
+              toaster.info("Link copied");
+              logShare(result.id, "copy_url");
+            }}
+          />
           {Download.isSupported() ? (
-            <div className="action">
-              <Tooltip text="Download">
-                <a
-                  href="#"
-                  onClick={(e) => {
-                    Download.download(url, term + ".gif");
-                    toaster.info("Downloading...");
-                    logShare(result.id, "download");
-                    e.preventDefault();
-                  }}
-                >
-                  <img
-                    className="action_icon"
-                    src="/icons/save-black-18dp.svg"
-                    alt="Download"
-                  />
-                </a>
-              </Tooltip>
-            </div>
+            <Action
+              text="Download"
+              iconPath="/icons/save-black-18dp.svg"
+              onClick={() => {
+                Download.download(url, term + ".gif");
+                toaster.info("Downloading...");
+                logShare(result.id, "download");
+              }}
+            />
           ) : null}
           {isShareSupported ? (
-            <div className="action">
-              <Tooltip text="Share">
-                <a
-                  href="#"
-                  onClick={(e) => {
-                    share({ text: `Shared via Popcorn GIF Search`, url });
-                    logShare(result.id, "share");
-                    e.preventDefault();
-                  }}
-                >
-                  <img
-                    className="action_icon"
-                    src="/icons/share-24px.svg"
-                    alt="Copy link"
-                  />
-                </a>
-              </Tooltip>
-            </div>
+            <Action
+              text="Share"
+              iconPath="/icons/share-24px.svg"
+              onClick={() => {
+                share({ text: `Shared via Popcorn GIF Search`, url });
+                logShare(result.id, "share");
+              }}
+            />
           ) : null}
         </div>
       </div>
