@@ -1,7 +1,6 @@
 import { Result } from "../types/tenorTypes";
-import SearchResult, { GIF_MARGIN_PX, GIF_WIDTH_PX } from "./searchResult";
-import { useRef, useState } from "react";
-import { useLayoutEffect } from "react";
+import SearchResult from "./searchResult";
+import useGifSizer from "../utils/useGifSizer";
 
 export default function SearchResults({
   term,
@@ -10,22 +9,12 @@ export default function SearchResults({
   term: string;
   results: Result[];
 }) {
-  const [columnCount, setColumnCount] = useState(3);
-  const containerRef = useRef<HTMLDivElement>(null);
-  useLayoutEffect(() => {
-    if (containerRef.current) {
-      const width = containerRef.current.offsetWidth;
-      const columns = Math.floor(
-        (width - GIF_MARGIN_PX) / (GIF_WIDTH_PX + GIF_MARGIN_PX)
-      );
-      setColumnCount(columns);
-    }
-  }, [containerRef.current?.offsetWidth || 1]);
+  const gifSize = useGifSizer();
 
   const columns: Result[][] = [];
 
   for (let i = 0; i < results.length; i++) {
-    const column = i % columnCount;
+    const column = i % gifSize.numColumns;
     if (columns[column] === undefined) columns[column] = [];
     columns[column].push(results[i]);
   }
@@ -37,18 +26,18 @@ export default function SearchResults({
           display: flex;
           flex-flow: row wrap;
           justify-content: center;
-          padding-right: ${GIF_MARGIN_PX}px;
-          padding-top: ${GIF_MARGIN_PX}px;
+          padding-right: ${gifSize.padding}px;
+          padding-top: ${gifSize.padding}px;
           width: 100%;
         }
 
         .gif_column {
           display: flex;
           flex-direction: column;
-          margin-left: ${GIF_MARGIN_PX}px;
+          margin-left: ${gifSize.padding}px;
         }
       `}</style>
-      <div className="results_container" ref={containerRef}>
+      <div className="results_container">
         {columns.map((column, i) => {
           return (
             <div key={`column_${i}`} className="gif_column">

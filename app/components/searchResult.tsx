@@ -7,9 +7,7 @@ import { ToastContext } from "./toastContainer";
 import GALogger from "../utils/GALogger";
 import axios from "axios";
 import SearchTenor from "../utils/searchTenor";
-
-export const GIF_WIDTH_PX = 220;
-export const GIF_MARGIN_PX = 15;
+import useGifSizer from "../utils/useGifSizer";
 
 function logShare(id: string, shareType: string) {
   GALogger.gifAction(shareType);
@@ -24,6 +22,8 @@ export default function SearchResult({
   result: Result;
 }) {
   const toaster = useContext(ToastContext);
+  const gifSize = useGifSizer();
+
   const { isSupported: isShareSupported, share } = useWebShare();
   const url = result.media[0].tinygif.url;
   const markdown = `![${term}](${url})`;
@@ -35,10 +35,10 @@ export default function SearchResult({
           display: flex;
           flex-direction: column;
           align-items: stretch;
-          margin-bottom: ${GIF_MARGIN_PX}px;
+          margin-bottom: ${gifSize.padding}px;
           background-color: #eeeeee;
           border-radius: 5px;
-          width: ${GIF_WIDTH_PX}px;
+          width: ${gifSize.width}px;
           box-shadow: 1px 1px 3px gray;
         }
 
@@ -50,7 +50,7 @@ export default function SearchResult({
           border-radius: 5px 5px 0px 0px;
           min-height: 100px;
           background-color: #cccccc;
-          width: ${GIF_WIDTH_PX}px;
+          width: ${gifSize.width}px;
         }
 
         .action_container {
