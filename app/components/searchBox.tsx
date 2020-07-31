@@ -11,7 +11,11 @@ export default function SearchBox({
   const ref = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    if (ref.current) ref.current.focus();
+    if (ref.current) {
+      // focus and click required to trigger keyboard on mobile
+      ref.current.focus();
+      ref.current.click();
+    }
   }, [ref]);
 
   return (
