@@ -14,6 +14,7 @@ export default function Placeholder({ onClick }: { onClick: () => void }) {
         }
 
         h1 {
+          font-size: 1.536rem;
           font-weight: normal;
         }
       `}</style>
