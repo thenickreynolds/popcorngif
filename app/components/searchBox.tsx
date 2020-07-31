@@ -35,11 +35,16 @@ export default function SearchBox({
         .search_input ::placeholder {
           color: #eebdbf;
         }
+
+        .search_input::-webkit-search-cancel-button {
+          -webkit-appearance: none;
+        }
       `}</style>
       <div>
         <input
           className="search_input"
           placeholder="Search gifs"
+          type="search"
           value={text}
           onChange={(e) => onChange(e.target.value)}
         />
