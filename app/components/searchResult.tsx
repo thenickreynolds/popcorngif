@@ -26,7 +26,6 @@ export default function SearchResult({
   const gifSize = useGifSizer();
   const [showControls, setShowControls] = useState(false);
 
-  // TODO remove or control based on native or not
   const forceControlsOn = false;
 
   const { isSupported: isShareSupported, share } = useWebShare();
@@ -65,25 +64,19 @@ export default function SearchResult({
           display: flex;
           flex-direction: row;
           justify-content: flex-end;
-          visibility: ${showControls || forceControlsOn ? "visible" : "hidden"};
-          opacity: ${showControls || forceControlsOn ? 1 : 0};
+          opacity: ${showControls || forceControlsOn ? 1 : 0.25};
           transition: ease-in-out, 0.15s ease-in-out;
           padding: 10px;
         }
 
         .action_buttons {
-          background-color: #ffffffaa;
+          background-color: #ffffff;
           box-shadow: 0px 0px 4px gray;
           display: flex;
           flex-direction: row;
           justify-content: center;
           border-radius: 500px;
           padding: 5px 10px 2px 5px;
-        }
-
-        .action_container:hover {
-          visibility: visible;
-          opacity: 1;
         }
 
         .action {
