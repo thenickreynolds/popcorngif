@@ -1,3 +1,23 @@
+import useEnvironment from "../utils/useEnvironment";
+import Consts from "../utils/consts";
+
+function Upsell() {
+  const environment = useEnvironment();
+  switch (environment) {
+    case "extension":
+      return <a href={Consts.WEBSITE_URL}>Check out our new website!</a>;
+    case "normal":
+      return (
+        <a href={Consts.EXTENSION_URL}>
+          Check out our Chrome extension and keep GIFs one click (or hotkey)
+          away!
+        </a>
+      );
+    default:
+      return <></>;
+  }
+}
+
 export default function Footer() {
   return (
     <div className="container">
@@ -8,7 +28,7 @@ export default function Footer() {
           flex-direction: column;
           align-items: stretch;
           color: #ffffff;
-          font-size: 8pt;
+          font-size: 10pt;
         }
 
         .footer_row {
@@ -16,13 +36,6 @@ export default function Footer() {
           flex-direction: row;
           align-content: stretch;
           padding: 14px;
-        }
-
-        .footer_row_top {
-          background-color: #ee6e73;
-        }
-
-        .footer_row_bottom {
           background-color: #df696e;
         }
 
@@ -38,32 +51,14 @@ export default function Footer() {
           height: 12px;
         }
       `}</style>
-      <div className="footer_row footer_row_top">
+      <div className="footer_row">
         <div className="footer_item">
-          <a href="http://nickreynolds.net/">created by nick reynolds</a>
+          <Upsell />
         </div>
         <div className="footer_item footer_right">
           <a href="https://tenor.com/">
-            via{" "}
+            Powered by{" "}
             <img className="tenor_logo" src="/tenor.svg" alt="Logo for Tenor" />
-          </a>
-        </div>
-      </div>
-      <div className="footer_row footer_row_bottom">
-        <div className="footer_item">
-          <a
-            href="https://github.com/thenickreynolds/popcorngif"
-            target="_blank"
-          >
-            see on github
-          </a>
-        </div>
-        <div className="footer_item footer_right">
-          <a
-            href="https://chrome.google.com/webstore/detail/gif-search/hhbinbjmknpkmebphiohakpakndjhpoe?hl=en"
-            target="_blank"
-          >
-            extension store
           </a>
         </div>
       </div>
