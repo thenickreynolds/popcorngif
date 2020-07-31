@@ -35,7 +35,8 @@ export default function Home() {
           display: flex;
           flex-direction: column;
           justify-content: center;
-          align-items: stretch;
+          align-content: center;
+          align-items: center;
         }
 
         .contents {
