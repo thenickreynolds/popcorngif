@@ -10,7 +10,6 @@ export default function Footer() {
           align-items: stretch;
           color: #ffffff;
           font-size: 10pt;
-          font-weight: bolder;
           background-color: #df696e;
         }
 

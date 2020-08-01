@@ -19,7 +19,7 @@ export default function Placeholder({ onClick }: { onClick: () => void }) {
         }
 
         h1 {
-          font-size: 1.536rem;
+          font-size: 1.9rem;
           font-weight: normal;
           margin-bottom: 40px;
         }

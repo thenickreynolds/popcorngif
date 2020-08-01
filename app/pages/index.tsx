@@ -65,10 +65,6 @@ export default function Home() {
           href="/favicon/favicon-16x16.png"
         />
         <link rel="manifest" href="/favicon/site.webmanifest" />
-        <link
-          href="https://fonts.googleapis.com/css?family=Roboto&display=swap"
-          rel="stylesheet"
-        />
       </Head>
 
       <AnalyticsPageLogger />
