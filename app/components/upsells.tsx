@@ -1,7 +1,9 @@
 import useEnvironment, { Environment } from "../utils/useEnvironment";
 import useDeviceDetect from "../utils/useDeviceDetect";
 import Consts from "../utils/consts";
-import Carousel from "./carousel";
+import { useState, useEffect } from "react";
+
+const intervalMs = 8000;
 
 type UpsellInfo = {
   element: React.ReactNode;
@@ -94,6 +96,19 @@ export default function Upsells({
   width: number;
   height: number;
 }) {
+  const upsells = getUpsells();
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    let i = Math.floor(Math.random() * upsells.length);
+    const intervalId = setInterval(() => {
+      const numChildren = upsells.length;
+      i = numChildren === 0 ? 0 : (i + 1) % numChildren;
+      setIndex(i);
+    }, intervalMs);
+    return () => clearInterval(intervalId);
+  });
+
   return (
     <>
       <style jsx={true}>{`
@@ -104,9 +119,38 @@ export default function Upsells({
           flex-direction: column;
           align-items: center;
         }
+
+        .container {
+          width: ${width}px;
+          overflow: hidden;
+        }
+
+        .spanner {
+          display: flex;
+          flex-direction: row;
+          width: ${width * upsells.length}px;
+          transform: translate(${-1 * width * index}px, 0px);
+          transition: ease-in-out, 0.35s ease-in-out;
+        }
+
+        .card {
+          text-align: center;
+          width: ${width}px;
+          color: #666666;
+        }
       `}</style>
       <div className="carousel">
-        <Carousel width={400} children={getUpsells()} />
+        <div className="container">
+          <div className="spanner">
+            {upsells.map((upsell, i) => {
+              return (
+                <div key={i} className="card">
+                  {upsell}
+                </div>
+              );
+            })}
+          </div>
+        </div>
       </div>
     </>
   );
