@@ -1,24 +1,9 @@
 import useEnvironment from "../utils/useEnvironment";
 import Consts from "../utils/consts";
 
-function Upsell() {
-  const environment = useEnvironment();
-  switch (environment) {
-    case "extension":
-      return <a href={Consts.WEBSITE_URL}>Check out our new website!</a>;
-    case "normal":
-      return (
-        <a href={Consts.EXTENSION_URL}>
-          Check out our Chrome extension and keep GIFs one click (or hotkey)
-          away!
-        </a>
-      );
-    default:
-      return <></>;
-  }
-}
-
 export default function Footer() {
+  const environment = useEnvironment();
+
   return (
     <div className="container">
       <style jsx={true}>{`
@@ -43,6 +28,10 @@ export default function Footer() {
           flex-grow: 1;
         }
 
+        .footer_item > a {
+          color: #ffffff;
+        }
+
         .footer_right {
           text-align: right;
         }
@@ -53,7 +42,13 @@ export default function Footer() {
       `}</style>
       <div className="footer_row">
         <div className="footer_item">
-          <Upsell />
+          {environment === "extension" ? (
+            <a href={Consts.WEBSITE_URL}>Check out our new website!</a>
+          ) : (
+            <a href={Consts.EXTENSION_URL}>
+              Try our Chrome extension and keep GIFs one click (or hotkey) away!
+            </a>
+          )}
         </div>
         <div className="footer_item footer_right">
           <a href="https://tenor.com/">

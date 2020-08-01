@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Url from "url-parse";
 
-type Environment = "extension" | "normal" | "unknown";
+export type Environment = "extension" | "normal" | "unknown";
 
 export default function useEnvironment() {
   const [environment, setEnvironment] = useState<Environment>("unknown");
