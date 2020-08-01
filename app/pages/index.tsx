@@ -66,7 +66,7 @@ export default function Home() {
         />
         <link rel="manifest" href="/favicon/site.webmanifest" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto:ital,wght@0,300;1,100&display=swap"
+          href="http://fonts.googleapis.com/css?family=Roboto"
           rel="stylesheet"
         />
       </Head>
