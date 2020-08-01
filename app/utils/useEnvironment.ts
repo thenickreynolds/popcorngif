@@ -7,7 +7,7 @@ export default function useEnvironment() {
   const [environment, setEnvironment] = useState<Environment>("unknown");
   useEffect(() => {
     const url = new Url(window.location.href, true);
-    const isExtension = url.query["logging_prepend_path"] === "extension";
+    const isExtension = url.query["source"] === "extension";
     setEnvironment(isExtension ? "extension" : "normal");
   }, []);
 
