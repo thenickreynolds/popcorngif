@@ -20,6 +20,7 @@ export default function Footer() {
           flex-grow: 1;
           padding: 8px;
           align-items: center;
+          filter: grayscale(50%);
         }
 
         .footer_item > a {
