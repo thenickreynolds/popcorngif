@@ -18,10 +18,14 @@ function logShare(id: string, shareType: string) {
 function Action({
   iconPath,
   text,
+  height,
+  width,
   onClick,
 }: {
   iconPath: string;
   text: string;
+  height: number;
+  width: number;
   onClick: () => void;
 }) {
   return (
@@ -32,8 +36,8 @@ function Action({
         }
 
         .action_icon {
-          height: 25px;
-          width: 25px;
+          height: ${height}px;
+          width: ${width}px;
         }
       `}</style>
       <div className="action">
@@ -114,7 +118,7 @@ export default function SearchResult({
           flex-direction: row;
           justify-content: center;
           border-radius: 500px;
-          padding: 5px 10px 2px 5px;
+          padding: 5px 10px 0px 5px;
         }
       `}</style>
 
@@ -128,7 +132,9 @@ export default function SearchResult({
         <div className="action_buttons">
           <Action
             text="Copy markdown"
-            iconPath="/icons/github-logo-tiny.svg"
+            iconPath="/icons/markdown_logo.svg"
+            height={25}
+            width={40}
             onClick={() => {
               Clipboard.write(markdown);
               toaster.info("Markdown copied");
@@ -138,6 +144,8 @@ export default function SearchResult({
           <Action
             text="Copy link"
             iconPath="/icons/link-black-18dp.svg"
+            height={25}
+            width={25}
             onClick={() => {
               Clipboard.write(url);
               toaster.info("Link copied");
@@ -148,6 +156,8 @@ export default function SearchResult({
             <Action
               text="Download"
               iconPath="/icons/save-black-18dp.svg"
+              height={25}
+              width={25}
               onClick={() => {
                 Download.download(url, term + ".gif");
                 toaster.info("Downloading...");
@@ -159,6 +169,8 @@ export default function SearchResult({
             <Action
               text="Share"
               iconPath="/icons/share-24px.svg"
+              height={25}
+              width={25}
               onClick={() => {
                 share({ text: `Shared via Popcorn GIF Search`, url });
                 logShare(result.id, "share");
