@@ -1,8 +1,12 @@
 import { useState, useEffect } from "react";
 
+function isWindowDefined() {
+  return typeof window !== "undefined";
+}
+
 function getWindowDimensions() {
-  // reasonable defaults for SSR
-  if (!window) {
+  if (!isWindowDefined()) {
+    // reasonable defaults for SSR
     return { width: 800, height: 600 };
   }
 
