@@ -1,15 +1,14 @@
 import Head from "next/head";
 import { useState } from "react";
 import Footer from "../components/footer";
-import Placeholder from "../components/placeholder";
 import SearchBox from "../components/searchBox";
 import dynamic from "next/dynamic";
+import SearchHandler from "../components/searchHandler";
 
 const AnalyticsPageLogger = dynamic(() =>
   import("../components/analyticsPageLogger")
 );
 const ToastContainer = dynamic(() => import("../components/toastContainer"));
-const SearchHandler = dynamic(() => import("../components/searchHandler"));
 
 const DESCRIPTION =
   "Seach GIFs fast! Zero ads, super fast results, click and drag into emails or one click download/copy markdown for your blog or GitHub comments!";
@@ -18,11 +17,6 @@ export default function Home() {
   const [searchValue, setSearchValue] = useState("");
 
   const searchTerm = searchValue.trim();
-  const hasSearchTerm = searchTerm.length > 0;
-
-  const placeholderClick = () => {
-    setSearchValue("popcorn");
-  };
 
   return (
     <div className="container">
@@ -93,11 +87,10 @@ export default function Home() {
       <ToastContainer />
 
       <main className="main">
-        {hasSearchTerm ? (
-          <SearchHandler term={searchTerm} />
-        ) : (
-          <Placeholder onClick={placeholderClick} />
-        )}
+        <SearchHandler
+          term={searchTerm}
+          onForceSearch={(term) => setSearchValue(term)}
+        />
       </main>
 
       <footer className="footer">

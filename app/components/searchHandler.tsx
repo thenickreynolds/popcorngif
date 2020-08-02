@@ -6,17 +6,26 @@ import useThrottle from "../utils/useThrottle";
 import LoadingSpinner from "./loadingSpinner";
 import SearchResults from "./searchResults";
 import GALogger from "../utils/GALogger";
+import Placeholder from "./placeholder";
 
 const CancelToken = axios.CancelToken;
 const requestCancelledError = "Cancelling request";
 
-export default function SearchHandler({ term }: { term: string }) {
+export default function SearchHandler({
+  term: nonThrottledTerm,
+  onForceSearch,
+}: {
+  term: string;
+  onForceSearch: (term: string) => void;
+}) {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
   const [results, setResults] = useState<Result[]>([]);
-  const throttledTerm = useThrottle(term, 600);
+  const term = useThrottle(nonThrottledTerm, 300);
 
-  const hasSearchTerm = throttledTerm.length > 0;
+  console.log(`[${new Date().getSeconds()}] ${term}`);
+
+  const hasSearchTerm = term.length > 0;
 
   useEffect(() => {
     setError(false);
@@ -28,11 +37,11 @@ export default function SearchHandler({ term }: { term: string }) {
     }
 
     GALogger.search();
-    console.log("searching: " + throttledTerm);
+    console.log("searching: " + term);
 
     setIsLoading(true);
     const source = CancelToken.source();
-    const url = SearchTenor.searchUrl(throttledTerm);
+    const url = SearchTenor.searchUrl(term);
     axios
       .get<TenorSearchResult>(url, { cancelToken: source.token })
       .then((response) => {
@@ -50,9 +59,13 @@ export default function SearchHandler({ term }: { term: string }) {
     return () => {
       source.cancel(requestCancelledError);
     };
-  }, [throttledTerm]);
+  }, [term]);
 
-  if (!hasSearchTerm || isLoading) {
+  if (!hasSearchTerm) {
+    return <Placeholder onClick={() => onForceSearch("popcorn")} />;
+  }
+
+  if (isLoading) {
     return <LoadingSpinner />;
   }
 
@@ -64,5 +77,5 @@ export default function SearchHandler({ term }: { term: string }) {
     return <div>No results :(</div>;
   }
 
-  return <SearchResults results={results} term={throttledTerm} />;
+  return <SearchResults results={results} term={term} />;
 }
