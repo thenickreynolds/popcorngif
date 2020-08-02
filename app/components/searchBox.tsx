@@ -11,11 +11,14 @@ export default function SearchBox({
   const ref = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    if (ref.current) {
-      // focus and click required to trigger keyboard on mobile
-      ref.current.focus();
-      ref.current.click();
-    }
+    // timeout required to enable focus in extension (due to iframe?)
+    setTimeout(() => {
+      if (ref.current) {
+        ref.current.focus();
+        // focus and click required to trigger keyboard on mobile
+        ref.current.click();
+      }
+    }, 100);
   }, [ref]);
 
   const hasContent = text.length > 0;
