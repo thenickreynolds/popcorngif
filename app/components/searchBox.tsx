@@ -18,7 +18,7 @@ export default function SearchBox({
         // focus and click required to trigger keyboard on mobile
         ref.current.click();
       }
-    }, 100);
+    }, 200);
   }, [ref]);
 
   const hasContent = text.length > 0;
