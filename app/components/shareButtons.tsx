@@ -10,7 +10,7 @@ export default function ShareButtons() {
         font_size: 16,
         labels: null,
         language: "en",
-        networks: ["facebook", "twitter", "reddit", "sharethis"],
+        networks: ["sharethis"],
         padding: 6,
         radius: 4,
         show_total: false,
