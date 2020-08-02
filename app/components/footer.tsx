@@ -21,7 +21,10 @@ export default function Footer() {
           flex-grow: 1;
           padding: 8px;
           align-items: center;
-          filter: grayscale(50%);
+        }
+
+        .share_buttons {
+          filter: grayscale(70%);
         }
 
         .footer_link {
@@ -43,7 +46,9 @@ export default function Footer() {
       <div className="footer_row">
         <div className="footer_item">
           <div className="share_text">Share the ❤️</div>
-          <ShareButtons />
+          <div className="share_buttons">
+            <ShareButtons />
+          </div>
         </div>
         <div className="footer_item footer_right">
           <ExternalLink href="https://tenor.com/">
