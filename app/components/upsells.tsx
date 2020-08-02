@@ -2,6 +2,7 @@ import useEnvironment, { Environment } from "../utils/useEnvironment";
 import useDeviceDetect from "../utils/useDeviceDetect";
 import Consts from "../utils/consts";
 import { useState, useEffect } from "react";
+import ExternalLink from "./externalLink";
 
 const intervalMs = 8000;
 
@@ -33,8 +34,11 @@ function getUpsells() {
   upsellInfo.push({
     element: (
       <div>
-        Check out <a href={Consts.WEBSITE_URL}>the Popcorn GIF site</a> on your
-        phone, built to be a great mobile experience
+        Check out{" "}
+        <ExternalLink href={Consts.WEBSITE_URL}>
+          the Popcorn GIF site
+        </ExternalLink>{" "}
+        on your phone, built to be a great mobile experience
       </div>
     ),
     showOnMobile: false,
@@ -53,9 +57,9 @@ function getUpsells() {
     element: (
       <div>
         Try our{" "}
-        <a href={Consts.EXTENSION_URL} target="_blank">
+        <ExternalLink href={Consts.EXTENSION_URL}>
           Chrome extension
-        </a>{" "}
+        </ExternalLink>{" "}
         and keep GIFs one click away!
       </div>
     ),
@@ -67,7 +71,9 @@ function getUpsells() {
     element: (
       <div>
         Check out our new site - search for GIFs at{" "}
-        <a href={Consts.WEBSITE_URL}>popcorngifsearch.com</a>
+        <ExternalLink href={Consts.WEBSITE_URL}>
+          popcorngifsearch.com
+        </ExternalLink>
       </div>
     ),
     showOnMobile: true,
@@ -77,9 +83,9 @@ function getUpsells() {
   upsellInfo.push({
     element: (
       <>
-        <a href={Consts.FACEBOOK_PAGE_URL} target="_blank">
+        <ExternalLink href={Consts.FACEBOOK_PAGE_URL}>
           Like our Facebook page
-        </a>{" "}
+        </ExternalLink>{" "}
         and share with your friends!
       </>
     ),

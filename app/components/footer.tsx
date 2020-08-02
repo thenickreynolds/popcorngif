@@ -1,4 +1,5 @@
 import dynamic from "next/dynamic";
+import ExternalLink from "./externalLink";
 
 const ShareButtons = dynamic(() => import("./shareButtons"));
 
@@ -46,10 +47,10 @@ export default function Footer() {
           <ShareButtons />
         </div>
         <div className="footer_item footer_right">
-          <a href="https://tenor.com/">
+          <ExternalLink href="https://tenor.com/">
             Powered by{" "}
             <img className="tenor_logo" src="/tenor.svg" alt="Logo for Tenor" />
-          </a>
+          </ExternalLink>
         </div>
       </div>
     </>
