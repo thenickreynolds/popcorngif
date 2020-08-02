@@ -69,6 +69,11 @@ export default function Home() {
           href="/favicon/favicon-16x16.png"
         />
         <link rel="manifest" href="/favicon/site.webmanifest" />
+
+        <meta
+          name="Description"
+          content="Seach GIFs fast! Zero ads, super fast results, click and drag into emails or one click download/copy markdown for your blog or GitHub comments!"
+        />
       </Head>
 
       <AnalyticsPageLogger />
