@@ -24,7 +24,7 @@ export default function Footer() {
           filter: grayscale(50%);
         }
 
-        .footer_item > a {
+        .footer_link {
           color: #ffffff;
         }
 
@@ -47,8 +47,14 @@ export default function Footer() {
         </div>
         <div className="footer_item footer_right">
           <ExternalLink href="https://tenor.com/">
-            Powered by{" "}
-            <img className="tenor_logo" src="/tenor.svg" alt="Logo for Tenor" />
+            <div className="footer_link">
+              Powered by{" "}
+              <img
+                className="tenor_logo"
+                src="/tenor.svg"
+                alt="Logo for Tenor"
+              />
+            </div>
           </ExternalLink>
         </div>
       </div>
