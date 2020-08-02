@@ -82,12 +82,6 @@ export default function Home() {
         <meta property="og:description" content={DESCRIPTION} />
         <meta property="og:site_name" content="Popcorn GIF Search" />
         <meta name="Description" content={DESCRIPTION} />
-
-        <script
-          type="text/javascript"
-          src="https://platform-api.sharethis.com/js/sharethis.js#property=5f25b2550b3e120012853e49&product=inline-share-buttons"
-          async={true}
-        />
       </Head>
 
       <AnalyticsPageLogger />
