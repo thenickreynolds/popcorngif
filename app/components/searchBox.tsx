@@ -31,10 +31,6 @@ export default function SearchBox({
           left: 6px;
         }
 
-        .hiddenlabel {
-          display: none;
-        }
-
         .search_input {
           width: 100%;
           outline: none;
@@ -89,12 +85,10 @@ export default function SearchBox({
             }
           }}
         />
-        <label htmlFor="search" className="hiddenlabel">
-          Search gifs
-        </label>
         <input
           id="search"
           className="search_input"
+          aria-label="Search gifs"
           placeholder="Search gifs"
           type="search"
           value={text}
