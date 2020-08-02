@@ -75,6 +75,7 @@ export default function SearchBox({
         <a
           className="back_button"
           href="#"
+          aria-label="clear search"
           onClick={(e) => {
             onChange("");
             e.preventDefault();
