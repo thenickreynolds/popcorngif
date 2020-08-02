@@ -74,6 +74,12 @@ export default function Home() {
           name="Description"
           content="Seach GIFs fast! Zero ads, super fast results, click and drag into emails or one click download/copy markdown for your blog or GitHub comments!"
         />
+
+        <script
+          type="text/javascript"
+          src="https://platform-api.sharethis.com/js/sharethis.js#property=5f25b2550b3e120012853e49&product=inline-share-buttons"
+          async={true}
+        />
       </Head>
 
       <AnalyticsPageLogger />
