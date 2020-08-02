@@ -23,8 +23,6 @@ export default function SearchHandler({
   const [results, setResults] = useState<Result[]>([]);
   const term = useThrottle(nonThrottledTerm, 300);
 
-  console.log(`[${new Date().getSeconds()}] ${term}`);
-
   const hasSearchTerm = term.length > 0;
 
   useEffect(() => {
@@ -37,7 +35,6 @@ export default function SearchHandler({
     }
 
     GALogger.search();
-    console.log("searching: " + term);
 
     setIsLoading(true);
     const source = CancelToken.source();
