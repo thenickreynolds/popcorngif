@@ -1,7 +1,6 @@
 import dynamic from "next/dynamic";
 import ExternalLink from "./externalLink";
-
-const ShareButtons = dynamic(() => import("./shareButtons"));
+import ShareButtons from "./shareButtons";
 
 export default function Footer() {
   return (
