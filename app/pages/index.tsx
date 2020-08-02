@@ -11,6 +11,9 @@ const AnalyticsPageLogger = dynamic(() =>
 const ToastContainer = dynamic(() => import("../components/toastContainer"));
 const SearchHandler = dynamic(() => import("../components/searchHandler"));
 
+const DESCRIPTION =
+  "Seach GIFs fast! Zero ads, super fast results, click and drag into emails or one click download/copy markdown for your blog or GitHub comments!";
+
 export default function Home() {
   const [searchValue, setSearchValue] = useState("");
 
@@ -70,10 +73,15 @@ export default function Home() {
         />
         <link rel="manifest" href="/favicon/site.webmanifest" />
 
+        <meta property="og:title" content="Popcorn GIF Search" />
+        <meta property="og:url" content="https://popcorngifseach.com" />
         <meta
-          name="Description"
-          content="Seach GIFs fast! Zero ads, super fast results, click and drag into emails or one click download/copy markdown for your blog or GitHub comments!"
+          property="og:image"
+          content="https://popcorngifsearch.com/icon.png"
         />
+        <meta property="og:description" content={DESCRIPTION} />
+        <meta property="og:site_name" content="Popcorn GIF Search" />
+        <meta name="Description" content={DESCRIPTION} />
 
         <script
           type="text/javascript"
