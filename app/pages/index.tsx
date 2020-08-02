@@ -4,8 +4,12 @@ import Footer from "../components/footer";
 import Placeholder from "../components/placeholder";
 import SearchBox from "../components/searchBox";
 import SearchHandler from "../components/searchHandler";
-import ToastContainer from "../components/toastContainer";
-import AnalyticsPageLogger from "../components/analyticsPageLogger";
+import dynamic from "next/dynamic";
+
+const AnalyticsPageLogger = dynamic(() =>
+  import("../components/analyticsPageLogger")
+);
+const ToastContainer = dynamic(() => import("../components/toastContainer"));
 
 export default function Home() {
   const [searchValue, setSearchValue] = useState("");
