@@ -1,4 +1,6 @@
-import { InlineShareButtons } from "sharethis-reactjs";
+import dynamic from "next/dynamic";
+
+const ShareButtons = dynamic(() => import("./shareButtons"));
 
 export default function Footer() {
   return (
@@ -31,7 +33,7 @@ export default function Footer() {
         }
 
         .share_text {
-          margin-left: 5px;
+          margin-right: 10px;
         }
 
         .tenor_logo {
@@ -40,23 +42,8 @@ export default function Footer() {
       `}</style>
       <div className="footer_row">
         <div className="footer_item">
-          <InlineShareButtons
-            config={{
-              alignment: "left",
-              color: "social",
-              enabled: true,
-              font_size: 16,
-              labels: null,
-              language: "en",
-              networks: ["facebook", "twitter", "reddit", "sharethis"],
-              padding: 12,
-              radius: 4,
-              show_total: false,
-              size: 25,
-              url: "https://popcorngifsearch.com",
-            }}
-          />
-          <div className="share_text">share with your friends</div>
+          <div className="share_text">Share the ❤️</div>
+          <ShareButtons />
         </div>
         <div className="footer_item footer_right">
           <a href="https://tenor.com/">

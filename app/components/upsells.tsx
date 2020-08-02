@@ -133,7 +133,7 @@ export default function Upsells({
           transition: ease-in-out, 0.35s ease-in-out;
         }
 
-        .card {
+        .upsell_card {
           text-align: center;
           width: ${width}px;
           color: #666666;
@@ -144,7 +144,7 @@ export default function Upsells({
           <div className="spanner">
             {upsells.map((upsell, i) => {
               return (
-                <div key={i} className="card">
+                <div key={"upsell_" + i} className="upsell_card">
                   {upsell}
                 </div>
               );

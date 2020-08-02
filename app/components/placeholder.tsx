@@ -25,7 +25,11 @@ export default function Placeholder({ onClick }: { onClick: () => void }) {
         }
       `}</style>
       <a href="#" onClick={(e) => onClick()}>
-        <img src="/popcorn-large.png" className="logo" />
+        <img
+          src="/popcorn-large.png"
+          className="logo"
+          alt="Popcorn GIF Search"
+        />
       </a>
       <h1>Welcome to Popcorn GIF</h1>
       <Upsells height={100} width={width} />
