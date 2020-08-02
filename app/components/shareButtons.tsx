@@ -11,7 +11,7 @@ export default function ShareButtons() {
         labels: null,
         language: "en",
         networks: ["facebook", "twitter", "reddit", "sharethis"],
-        padding: 12,
+        padding: 6,
         radius: 4,
         show_total: false,
         size: 25,
