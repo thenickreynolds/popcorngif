@@ -3,13 +3,13 @@ import { useState } from "react";
 import Footer from "../components/footer";
 import Placeholder from "../components/placeholder";
 import SearchBox from "../components/searchBox";
-import SearchHandler from "../components/searchHandler";
 import dynamic from "next/dynamic";
 
 const AnalyticsPageLogger = dynamic(() =>
   import("../components/analyticsPageLogger")
 );
 const ToastContainer = dynamic(() => import("../components/toastContainer"));
+const SearchHandler = dynamic(() => import("../components/searchHandler"));
 
 export default function Home() {
   const [searchValue, setSearchValue] = useState("");
