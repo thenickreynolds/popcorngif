@@ -15,7 +15,7 @@ export default function Placeholder({ onClick }: { onClick: () => void }) {
 
         .logo {
           width: 140px;
-          height: 140px;
+          height: 142px;
         }
 
         h1 {
