@@ -46,7 +46,7 @@ function Action({
             href="#"
             onClick={(e) => {
               onClick();
-              e.preventDefault;
+              e.preventDefault();
             }}
           >
             <img className="action_icon" src={iconPath} alt={text} />
