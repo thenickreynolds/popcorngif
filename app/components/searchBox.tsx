@@ -94,6 +94,7 @@ export default function SearchBox({
           type="search"
           value={text}
           onChange={(e) => onChange(e.target.value)}
+          autoComplete="off"
           ref={ref}
         />
       </div>
