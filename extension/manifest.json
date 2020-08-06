@@ -1,7 +1,7 @@
 {
     "manifest_version": 2,
     "name": "Popcorn GIF Search",
-    "version": "1.5",
+    "version": "1.6",
     "description": "Search for GIFs in your browser - quickly save, copy, or get GitHub markup!",
     "icons": {
         "16": "icon.png",
@@ -18,7 +18,6 @@
     "permissions": [
         "downloads"
     ],
-    "content_security_policy": "script-src 'self' https://www.google-analytics.com https://connect.facebook.net; object-src 'self'",
     "commands": {
         "_execute_browser_action": {
             "suggested_key": {
