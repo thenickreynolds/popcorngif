@@ -2,13 +2,9 @@ import Head from "next/head";
 import { useState } from "react";
 import Footer from "../components/footer";
 import SearchBox from "../components/searchBox";
-import dynamic from "next/dynamic";
 import SearchHandler from "../components/searchHandler";
-
-const AnalyticsPageLogger = dynamic(() =>
-  import("../components/analyticsPageLogger")
-);
-const ToastContainer = dynamic(() => import("../components/toastContainer"));
+import AnalyticsPageLogger from "../components/analyticsPageLogger";
+import ToastContainer from "../components/toastContainer";
 
 const DESCRIPTION =
   "Seach GIFs fast! Zero ads, super fast results, click and drag into emails or one click download/copy markdown for your blog or GitHub comments!";
