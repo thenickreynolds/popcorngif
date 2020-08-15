@@ -5075,9 +5075,9 @@ shallow-clone@^3.0.0:
     kind-of "^6.0.2"
 
 sharethis-reactjs@^1.5.0:
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/sharethis-reactjs/-/sharethis-reactjs-1.5.0.tgz#9c6a563c9f89e4cc4ea633e993016bab84fe60df"
-  integrity sha512-aYbXxbKQZzf9m8iFtNkHJGrQXy9VX/tbJ2PWOOgMWB0XNZU3vwUfKq/obMg5hFDZ/fa4rAj7G+LxN5zvLufx4w==
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/sharethis-reactjs/-/sharethis-reactjs-1.6.0.tgz#5b15d3fb936490785e69c731465964c89d5951f0"
+  integrity sha512-cYrf9OgStwfOjPrHhk/0SpFuJNFQQU6OY7pWlhWtu3smuF+rYNF+vOL4aM/pwaP1QGwwrEuHTAqfpG3OWXPIag==
 
 shell-quote@1.7.2:
   version "1.7.2"
