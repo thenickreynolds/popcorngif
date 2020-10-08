@@ -13,6 +13,7 @@ export default function SearchResults({
 
   const columns: Result[][] = [];
 
+  // TODO change so we add to the shortest one so far
   for (let i = 0; i < results.length; i++) {
     const column = i % gifSize.numColumns;
     if (columns[column] === undefined) columns[column] = [];

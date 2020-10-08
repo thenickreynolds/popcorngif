@@ -71,7 +71,15 @@ export default function SearchResult({
   const forceControlsOn = false;
 
   const { isSupported: isShareSupported, share } = useWebShare();
-  const url = result.media[0].tinygif.url;
+  const media = result.media[0].tinygif;
+  const url = media.url;
+
+  const dimensX = media.dims[0];
+  const dimensY = media.dims[1];
+
+  const ratio = dimensX / dimensY;
+  const height = gifSize.width * ratio;
+
   const markdown = `![${term}](${url})`;
 
   return (
@@ -90,13 +98,14 @@ export default function SearchResult({
           background-color: #eeeeee;
           border-radius: 5px;
           width: ${gifSize.width}px;
+          height: ${height}px;
           box-shadow: 1px 1px 3px gray;
           overflow: hidden;
         }
 
         .gif {
-          min-height: 100px;
           background-color: #cccccc;
+          height: 100%;
           width: 100%;
         }
 
