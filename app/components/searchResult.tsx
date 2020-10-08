@@ -77,7 +77,7 @@ export default function SearchResult({
   const dimensX = media.dims[0];
   const dimensY = media.dims[1];
 
-  const ratio = dimensX / dimensY;
+  const ratio = dimensY / dimensX;
   const height = gifSize.width * ratio;
 
   const markdown = `![${term}](${url})`;
