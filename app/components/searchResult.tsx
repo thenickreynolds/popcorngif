@@ -9,6 +9,7 @@ import SearchTenor from "../utils/searchTenor";
 import useGifSizer from "../utils/useGifSizer";
 import Download from "../utils/download";
 import Tooltip from "./tooltip";
+import GifResourceUtils from "../utils/gifResourceUtils";
 
 function logShare(id: string, shareType: string) {
   GALogger.gifAction(shareType);
@@ -71,7 +72,12 @@ export default function SearchResult({
   const forceControlsOn = false;
 
   const { isSupported: isShareSupported, share } = useWebShare();
-  const url = result.media[0].tinygif.url;
+  const media = GifResourceUtils.getMedia(result);
+  const url = media.url;
+
+  const ratio = GifResourceUtils.getHeight(media) / GifResourceUtils.getWidth(media);
+  const height = gifSize.width * ratio;
+
   const markdown = `![${term}](${url})`;
 
   return (
@@ -90,13 +96,14 @@ export default function SearchResult({
           background-color: #eeeeee;
           border-radius: 5px;
           width: ${gifSize.width}px;
+          height: ${height}px;
           box-shadow: 1px 1px 3px gray;
           overflow: hidden;
         }
 
         .gif {
-          min-height: 100px;
           background-color: #cccccc;
+          height: 100%;
           width: 100%;
         }
 
