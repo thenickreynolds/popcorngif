@@ -10,6 +10,7 @@ import useGifSizer from "../utils/useGifSizer";
 import Download from "../utils/download";
 import Tooltip from "./tooltip";
 import GifResourceUtils from "../utils/gifResourceUtils";
+import Consts from "../utils/consts";
 
 function logShare(id: string, shareType: string) {
   GALogger.gifAction(shareType);
@@ -94,10 +95,10 @@ export default function SearchResult({
           flex-direction: column;
           margin-bottom: ${gifSize.spacing}px;
           background-color: #eeeeee;
-          border-radius: 5px;
+          ${Consts.CSS_BORDER_RADIUS}
+          ${Consts.CSS_SHADOW}
           width: ${gifSize.width}px;
           height: ${height}px;
-          box-shadow: 1px 1px 3px gray;
           overflow: hidden;
         }
 

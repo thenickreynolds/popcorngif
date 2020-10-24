@@ -1,12 +1,16 @@
 import { useRef } from "react";
 import { useEffect } from "react";
+import classNames from 'classnames/bind';
+import Consts from "../utils/consts";
 
 export default function SearchBox({
   text,
   onChange,
+  restingStateSearchBarYOffset,
 }: {
   text: string;
   onChange: (text: string) => void;
+  restingStateSearchBarYOffset: number;
 }) {
   const ref = useRef<HTMLInputElement>(null);
 
@@ -26,6 +30,11 @@ export default function SearchBox({
   return (
     <div>
       <style jsx={true}>{`
+        .search_container {
+          display: flex;
+          justify-content: center;
+        }
+
         .back_button {
           position: absolute;
           width 42px;
@@ -38,23 +47,13 @@ export default function SearchBox({
           width: 100%;
           outline: none;
           padding: 19px 5px 16px 52px;
-          color: #ffffff;
-          transition: ease-in-out, 0.35s ease-in-out;
-          border: none;
-          box-shadow: 2px 1px 3px gray;
+          color: #000000;
+          transition: ease-in-out, 0.25s ease-in-out;
+          border: 1px solid #dfe1e5;
+          ${Consts.CSS_BORDER_RADIUS}
           font: font-family: "Roboto", sans-serif;
           font-size: 13pt;
           font-weight: none;
-          background: #ee6e73 url(${
-            hasContent
-              ? "/icons/back_chevron_feature.svg"
-              : "/icons/search_icon_color_feature.svg"
-          }) no-repeat
-            scroll 20px 22px;
-        }
-
-        .search_input:focus {
-          color: #000000;
           background: #ffffff url(${
             hasContent
               ? "/icons/back_chevron_black.svg"
@@ -62,19 +61,25 @@ export default function SearchBox({
           }) no-repeat scroll 20px 22px};
         }
 
-        .search_input:focus ::placeholder {
-          color: #999999;
+        .search_input:focus {
+          ${Consts.CSS_SHADOW}
+        }
+
+        .search_input_default_state {
+          max-width: 300px;
+          margin: 0px 40px 0px 40px;
+          transform: translate(0px, ${restingStateSearchBarYOffset}px);
         }
 
         .search_input ::placeholder {
-          color: #eebdbf;
+          color: #999999;
         }
 
         .search_input::-webkit-search-cancel-button {
           -webkit-appearance: none;
         }
       `}</style>
-      <div>
+      <div className="search_container">
         <a
           className="back_button"
           href="#"
@@ -91,12 +96,18 @@ export default function SearchBox({
         />
         <input
           id="search"
-          className="search_input"
-          aria-label="Search gifs"
-          placeholder="Search gifs"
+          className={classNames({
+            search_input: true,
+            search_input_default_state: !hasContent
+          })}
+          aria-label="Search Popcorn GIF"
+          placeholder="Search Popcorn GIF"
           type="search"
           value={text}
-          onChange={(e) => onChange(e.target.value)}
+          onChange={(e) => {
+            onChange(e.target.value);
+            e.target.focus();
+          }}
           autoComplete="off"
           ref={ref}
         />

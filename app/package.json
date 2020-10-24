@@ -8,6 +8,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@types/classnames": "^2.2.10",
     "@types/url-parse": "^1.4.3",
     "axios": "^0.19.2",
     "classnames": "^2.2.6",

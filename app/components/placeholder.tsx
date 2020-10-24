@@ -1,8 +1,20 @@
 import Upsells from "./upsells";
 import useWindowDimensions from "../utils/useWindowDimensions";
+import { useLayoutEffect, useRef } from "react";
 
-export default function Placeholder({ onClick }: { onClick: () => void }) {
+export default function Placeholder(
+  {
+    setSearchTerm,
+    onTitlePositionUpdated
+  }: {
+    setSearchTerm: (term: string) => void;
+    onTitlePositionUpdated: (yOffset: number) => void;
+  }) {
   const { width } = useWindowDimensions();
+  const titleRef = useRef<HTMLDivElement>(null);
+  useLayoutEffect(() => {
+    onTitlePositionUpdated(titleRef.current?.offsetTop || 0);
+  }, [titleRef]);
 
   return (
     <div className="container">
@@ -23,15 +35,20 @@ export default function Placeholder({ onClick }: { onClick: () => void }) {
           font-weight: normal;
           margin-bottom: 40px;
         }
+
+        #searchPlaceholder {
+          margin-top: 30px;
+          height: 100px;
+        }
       `}</style>
-      <a href="#" onClick={(e) => onClick()}>
+      <a href="#" onClick={(e) => setSearchTerm("popcorn")}>
         <img
           src="/popcorn-large.png"
           className="logo"
           alt="Popcorn GIF Search"
         />
       </a>
-      <h1>Welcome to Popcorn GIF</h1>
+      <div ref={titleRef} id="searchPlaceholder" />
       <Upsells height={100} width={width} />
     </div>
   );
