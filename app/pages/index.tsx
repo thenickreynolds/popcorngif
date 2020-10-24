@@ -11,6 +11,7 @@ const DESCRIPTION =
 
 export default function Home() {
   const [searchValue, setSearchValue] = useState("");
+  const [titleYOffset, setTitleYOffset] = useState(0);
 
   const searchTerm = searchValue.trim();
 
@@ -77,7 +78,7 @@ export default function Home() {
       <AnalyticsPageLogger />
 
       <header>
-        <SearchBox text={searchValue} onChange={setSearchValue} />
+        <SearchBox text={searchValue} onChange={setSearchValue} restingStateSearchBarYOffset={titleYOffset} />
       </header>
 
       <ToastContainer />
@@ -86,6 +87,7 @@ export default function Home() {
         <SearchHandler
           term={searchTerm}
           onForceSearch={(term) => setSearchValue(term)}
+          onTitlePositionUpdated={(yOffset) => setTitleYOffset(yOffset)}
         />
       </main>
 

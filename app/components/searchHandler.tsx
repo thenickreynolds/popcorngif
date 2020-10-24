@@ -14,9 +14,11 @@ const requestCancelledError = "Cancelling request";
 export default function SearchHandler({
   term: nonThrottledTerm,
   onForceSearch,
+  onTitlePositionUpdated,
 }: {
   term: string;
   onForceSearch: (term: string) => void;
+  onTitlePositionUpdated: (yOffset: number) => void;
 }) {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
@@ -59,7 +61,7 @@ export default function SearchHandler({
   }, [term]);
 
   if (!hasSearchTerm) {
-    return <Placeholder onClick={() => onForceSearch("popcorn")} />;
+    return <Placeholder setSearchTerm={term => onForceSearch(term)} onTitlePositionUpdated={onTitlePositionUpdated}/>;
   }
 
   if (isLoading) {
