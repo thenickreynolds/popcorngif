@@ -94,11 +94,6 @@ export default function Home() {
           `,
         }}
       />
-      <Script>
-        {`
-            
-          `}
-      </Script>
 
       <header>
         <SearchBox text={searchValue} onChange={setSearchValue} />
