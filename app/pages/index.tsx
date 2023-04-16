@@ -61,7 +61,11 @@ export default function Home() {
           sizes="16x16"
           href="/favicon/favicon-16x16.png"
         />
-        <link rel="manifest" href="/favicon/site.webmanifest" />
+        <link
+          rel="manifest"
+          href="/favicon/site.webmanifest"
+          crossOrigin="anonymous"
+        />
 
         <meta property="og:title" content="Popcorn GIF Search" />
         <meta property="og:url" content="https://popcorngifseach.com" />
@@ -72,21 +76,21 @@ export default function Home() {
         <meta property="og:description" content={DESCRIPTION} />
         <meta property="og:site_name" content="Popcorn GIF Search" />
         <meta name="Description" content={DESCRIPTION} />
+      </Head>
 
-        <Script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=G-38XW9XL27D"
-        />
-        <Script>
-          {`
+      <Script
+        async
+        src="https://www.googletagmanager.com/gtag/js?id=G-38XW9XL27D"
+      />
+      <Script>
+        {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
 
             gtag('config', 'G-38XW9XL27D');
           `}
-        </Script>
-      </Head>
+      </Script>
 
       <header>
         <SearchBox text={searchValue} onChange={setSearchValue} />
