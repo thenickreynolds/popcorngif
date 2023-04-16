@@ -90,10 +90,8 @@ export default function Home() {
           window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-
-            gtag('config', 'G-38XW9XL27D',{
-            page_path: window.location.pathname,
-          }`,
+            gtag('config', 'G-38XW9XL27D');
+          `,
         }}
       />
       <Script>
