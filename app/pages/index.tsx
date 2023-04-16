@@ -1,9 +1,9 @@
 import Head from "next/head";
+import Script from "next/script";
 import { useState } from "react";
 import Footer from "../components/footer";
 import SearchBox from "../components/searchBox";
 import SearchHandler from "../components/searchHandler";
-import AnalyticsPageLogger from "../components/analyticsPageLogger";
 import ToastContainer from "../components/toastContainer";
 
 const DESCRIPTION =
@@ -72,9 +72,21 @@ export default function Home() {
         <meta property="og:description" content={DESCRIPTION} />
         <meta property="og:site_name" content="Popcorn GIF Search" />
         <meta name="Description" content={DESCRIPTION} />
-      </Head>
 
-      <AnalyticsPageLogger />
+        <Script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-38XW9XL27D"
+        />
+        <Script>
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-38XW9XL27D');
+          `}
+        </Script>
+      </Head>
 
       <header>
         <SearchBox text={searchValue} onChange={setSearchValue} />
