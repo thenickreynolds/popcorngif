@@ -25,6 +25,7 @@ export default function Home() {
           justify-content: center;
           align-items: stretch;
           width: 100%;
+          max-width: 100%;
         }
 
         .main {

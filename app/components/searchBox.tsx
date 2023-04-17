@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import { useEffect } from "react";
+import { FaSearch } from "react-icons/fa";
 
 export default function SearchBox({
   text,
@@ -22,6 +23,7 @@ export default function SearchBox({
   }, [ref]);
 
   const hasContent = text.length > 0;
+  const focused = ref.current != null && ref.current === document.activeElement;
 
   return (
     <div>
@@ -45,62 +47,48 @@ export default function SearchBox({
           font: font-family: "Roboto", sans-serif;
           font-size: 13pt;
           font-weight: none;
-          background: #ee6e73 url(${
-            hasContent
-              ? "/icons/back_chevron_feature.svg"
-              : "/icons/search_icon_color_feature.svg"
-          }) no-repeat
-            scroll 20px 22px;
+          background: #ee6e73;
         }
 
         .search_input:focus {
           color: #000000;
-          background: #ffffff url(${
-            hasContent
-              ? "/icons/back_chevron_black.svg"
-              : "/icons/search_icon_color_black.svg"
-          }) no-repeat scroll 20px 22px};
+          background: #ffffff;
         }
 
         .search_input:focus ::placeholder {
           color: #999999;
         }
 
+        input::placeholder {
+          color: #000000;
+        }
+
         .search_input ::placeholder {
-          color: #eebdbf;
+          color: #FFFFFF;
         }
 
         .search_input::-webkit-search-cancel-button {
           -webkit-appearance: none;
         }
       `}</style>
-      <div>
-        <a
-          className="back_button"
-          href="#"
-          aria-label="clear search"
-          onClick={(e) => {
-            onChange("");
-            e.preventDefault();
-            if (ref.current) {
-              // focus and click required to trigger keyboard on mobile
-              ref.current.focus();
-              ref.current.click();
-            }
-          }}
-        />
-        <input
-          id="search"
-          className="search_input"
-          aria-label="Search gifs"
-          placeholder="Search gifs"
-          type="search"
-          value={text}
-          onChange={(e) => onChange(e.target.value)}
-          autoComplete="off"
-          ref={ref}
-        />
-      </div>
+
+      <form>
+        <div className="relative">
+          <div className="absolute inset-y-0 left-0 flex items-center pl-4 pt-1 pointer-events-none">
+            <FaSearch />
+          </div>
+          <input
+            type="search"
+            id="search_input"
+            className="search_input block w-full p-4 pl-10 border-transparent focus:border-transparent focus:ring-0"
+            placeholder="Search GIFs"
+            value={text}
+            onChange={(e) => onChange(e.target.value)}
+            autoComplete="off"
+            ref={ref}
+          />
+        </div>
+      </form>
     </div>
   );
 }
