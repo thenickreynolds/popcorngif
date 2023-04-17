@@ -11,7 +11,6 @@ const DESCRIPTION =
 
 export default function Home() {
   const [searchValue, setSearchValue] = useState("");
-
   const searchTerm = searchValue.trim();
 
   return (
