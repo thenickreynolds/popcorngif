@@ -1,5 +1,7 @@
 import Upsells from "./upsells";
 import useWindowDimensions from "../utils/useWindowDimensions";
+import PopcornLarge from "../public/popcorn-large.png";
+import Image from "next/image";
 
 export default function Placeholder({ onClick }: { onClick: () => void }) {
   const { width } = useWindowDimensions();
@@ -25,9 +27,11 @@ export default function Placeholder({ onClick }: { onClick: () => void }) {
         }
       `}</style>
       <a href="#" onClick={(e) => onClick()}>
-        <img
-          src="/popcorn-large.png"
+        <Image
+          src={PopcornLarge}
           className="logo"
+          width="140"
+          height="142"
           alt="Popcorn GIF Search"
         />
       </a>

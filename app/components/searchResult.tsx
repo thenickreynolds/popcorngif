@@ -10,6 +10,11 @@ import useGifSizer from "../utils/useGifSizer";
 import Download from "../utils/download";
 import Tooltip from "./tooltip";
 import GifResourceUtils from "../utils/gifResourceUtils";
+import Image from "next/image";
+import MarkdownAction from "../public/icons/markdown_logo.svg";
+import LinkAction from "../public/icons/link-black-18dp.svg";
+import SaveAction from "../public/icons/save-black-18dp.svg";
+import ShareAction from "../public/icons/share-24px.svg";
 
 function logShare(id: string, shareType: string) {
   GALogger.gifAction(shareType);
@@ -17,13 +22,13 @@ function logShare(id: string, shareType: string) {
 }
 
 function Action({
-  iconPath,
+  icon,
   text,
   height,
   width,
   onClick,
 }: {
-  iconPath: string;
+  icon: any;
   text: string;
   height: number;
   width: number;
@@ -50,7 +55,13 @@ function Action({
               e.preventDefault();
             }}
           >
-            <img className="action_icon" src={iconPath} alt={text} />
+            <Image
+              className="action_icon"
+              src={icon}
+              alt={text}
+              width={width}
+              height={height}
+            />
           </a>
         </Tooltip>
       </div>
@@ -75,7 +86,8 @@ export default function SearchResult({
   const media = GifResourceUtils.getMedia(result);
   const url = media.url;
 
-  const ratio = GifResourceUtils.getHeight(media) / GifResourceUtils.getWidth(media);
+  const ratio =
+    GifResourceUtils.getHeight(media) / GifResourceUtils.getWidth(media);
   const height = gifSize.width * ratio;
 
   const markdown = `![${term}](${url})`;
@@ -139,7 +151,7 @@ export default function SearchResult({
         <div className="action_buttons">
           <Action
             text="Copy markdown"
-            iconPath="/icons/markdown_logo.svg"
+            icon={MarkdownAction}
             height={25}
             width={40}
             onClick={() => {
@@ -150,7 +162,7 @@ export default function SearchResult({
           />
           <Action
             text="Copy link"
-            iconPath="/icons/link-black-18dp.svg"
+            icon={LinkAction}
             height={25}
             width={25}
             onClick={() => {
@@ -162,7 +174,7 @@ export default function SearchResult({
           {Download.isSupported() ? (
             <Action
               text="Download"
-              iconPath="/icons/save-black-18dp.svg"
+              icon={SaveAction}
               height={25}
               width={25}
               onClick={() => {
@@ -175,7 +187,7 @@ export default function SearchResult({
           {isShareSupported ? (
             <Action
               text="Share"
-              iconPath="/icons/share-24px.svg"
+              icon={ShareAction}
               height={25}
               width={25}
               onClick={() => {

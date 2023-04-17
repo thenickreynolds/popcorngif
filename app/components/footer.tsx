@@ -1,6 +1,7 @@
-import dynamic from "next/dynamic";
 import ExternalLink from "./externalLink";
 import ShareButtons from "./shareButtons";
+import TenorLogo from "../public/tenor.svg";
+import Image from "next/image";
 
 export default function Footer() {
   return (
@@ -54,9 +55,9 @@ export default function Footer() {
           <ExternalLink href="https://tenor.com/">
             <div className="footer_link">
               Powered by{" "}
-              <img
+              <Image
                 className="tenor_logo"
-                src="/tenor.svg"
+                src={TenorLogo}
                 alt="Logo for Tenor"
               />
             </div>
