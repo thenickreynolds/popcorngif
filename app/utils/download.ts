@@ -1,9 +1,11 @@
+declare const chrome: any;
+
 export default class Download {
   static isSupported() {
-    return false;
+    return chrome && chrome.downloads && chrome.downloads.download;
   }
 
   static download(url: string, filename: string) {
-    // TODO figure out a way to support this, all X-site references are not working
+    chrome.downloads.download({ url, saveAs: filename });
   }
 }

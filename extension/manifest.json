@@ -1,7 +1,7 @@
 {
-  "manifest_version": 2,
+  "manifest_version": 3,
   "name": "Popcorn GIF Search",
-  "version": "1.7",
+  "version": "1.8",
   "description": "Search for GIFs in your browser - quickly save, copy, or get GitHub markup!",
   "icons": {
     "16": "icon.png",
@@ -19,5 +19,8 @@
         "default": "Alt+G"
       }
     }
-  }
+  },
+  "permissions": [
+    "downloads"
+  ]
 }
