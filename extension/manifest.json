@@ -12,7 +12,10 @@
     "default_title": "Popcorn GIF Search",
     "default_popup": "popup.html"
   },
-  "web_accessible_resources": ["popup.html"],
+  "web_accessible_resources": [{ 
+    "resources": ["popup.html"],
+    "matches": []
+  }],
   "commands": {
     "_execute_browser_action": {
       "suggested_key": {
