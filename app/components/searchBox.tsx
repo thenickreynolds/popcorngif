@@ -72,7 +72,7 @@ export default function SearchBox({
         }
       `}</style>
 
-      <form>
+      <form onSubmit={(e) => e.preventDefault()}>
         <div className="relative">
           <div className="absolute inset-y-0 left-0 flex items-center pl-4 pt-1 pointer-events-none">
             <FaSearch />

@@ -2,7 +2,6 @@ import { useState } from "react";
 import React from "react";
 import { useContext } from "react";
 import { useEffect } from "react";
-import Immutable from "immutable";
 
 enum ToastType {
   Success,
@@ -58,12 +57,12 @@ export const ToastContext = React.createContext(new Context());
 
 export default function ToastContainer() {
   const context = useContext(ToastContext);
-  const [toasts, setToasts] = useState(Immutable.Set<ToastInfo>());
+  const [toasts, setToasts] = useState<ToastInfo[]>([]);
 
   useEffect(() => {
     context.setListener({
-      addToast: (toast) => setToasts(toasts.add(toast)),
-      removeToast: (toast) => setToasts(toasts.remove(toast)),
+      addToast: (toast) => setToasts([toast, ...toasts]),
+      removeToast: (toast) => setToasts(toasts.filter((t) => t === toast)),
     });
     return () => {
       context.clearListener();
