@@ -1,6 +1,6 @@
 import Head from "next/head";
 import Script from "next/script";
-import { useState } from "react";
+import {useRouter, usePathname, useSearchParams } from "next/navigation";
 import Footer from "../components/footer";
 import SearchBox from "../components/searchBox";
 import SearchHandler from "../components/searchHandler";
@@ -10,7 +10,21 @@ const DESCRIPTION =
   "Seach GIFs fast! Zero ads, super fast results, click and drag into emails or one click download/copy markdown for your blog or GitHub comments!";
 
 export default function Home() {
-  const [searchValue, setSearchValue] = useState("");
+  const router = useRouter();
+  const pathname = usePathname();
+
+  const setSearchValue = (text: string) => {
+      if (text == "") {
+          router.push(pathname)
+          return
+      }
+      const params = new URLSearchParams();
+      params.set("search", text);
+      router.push(pathname + "?" + params.toString());
+  }
+
+  const searchParams = useSearchParams();
+  const searchValue = searchParams.get("search") ?? "";
   const searchTerm = searchValue.trim();
 
   return (
