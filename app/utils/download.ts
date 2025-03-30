@@ -2,7 +2,7 @@ declare const chrome: any;
 
 export default class Download {
   static isSupported() {
-    return chrome && chrome.downloads && chrome.downloads.download;
+    return typeof chrome !== 'undefined' && chrome?.downloads?.download !== undefined;
   }
 
   static download(url: string, filename: string) {
